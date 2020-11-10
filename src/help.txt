@@ -1,0 +1,23 @@
+clinic <command> [arg1] [arg2]
+
+    help    -   
+
+Login
+
+    login   -   Prompts user for login details that will be used to book or host a clinic
+                Prints an error if credentials are incorrect.
+                Else outputs a success message.
+
+Hosting/Booking:
+
+    host [date] [time]  -   Hosts clinic at specified date and time.
+                            Outputs error if time slot is already hosting a clinic.
+                            Assigns uid to the hosted slot.
+
+    book [uid] [time slot]  -   Books specified clinic at specific time slot.
+                                Outputs error message if booking slot has been taken.
+                                Else it fills the slot and gives success message.
+
+    cancel [uid]    -   Cancels clinic if it hasn't been booked yet.
+                        Outputs error message if a slot has been filled and can't be cancelled.
+                        Else outputs a success message.
