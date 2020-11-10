@@ -15,6 +15,11 @@ valid_months = ['january', 'february','march', 'april', 'may', 'june', 'july', '
 valid_check = ['1', '2', '3', '4']
 
 def cred_gen(username):
+    """Generating unique tokens and saving the pickle files to data_files.
+
+    Args:
+        username ([str]): [the users username]
+    """
     global creds
     if os.path.exists('tokens/'+username+'.pickle'):
         with open('tokens/'+username+'.pickle', 'rb') as token:
@@ -33,11 +38,17 @@ def cred_gen(username):
 
 
 def service_gen():
+    """
+    generating the calendar service.
+    """
     global service
     service = build('calendar', 'v3', credentials=creds)
 
 
 def remove_event(event_id):
+    """
+    Function used tom remove events from the calendar and call another function to remove the data from data_files
+    """
     global service
     service.events().delete(calendarId='primary', eventId= event_id, sendUpdates='all').execute()
     event_data_removal(event_id)
@@ -45,6 +56,9 @@ def remove_event(event_id):
 
 
 def show_event_id():
+    """
+    [Show event unique IDs]
+    """
     events_result = service.events().list(calendarId='primary',).execute()
     events = events_result.get('items', [])
     if not events:
@@ -61,6 +75,16 @@ def show_event_id():
 
 
 def create_event_voluteer_slots(summary_res, desc, location, vol, start, end):
+    """[Creating an event and adding it to the calendar]
+
+    Args:
+        summary_res ([str]): [we call summary_res to complete summary to add Code Clinic to the event]
+        desc ([str]): [A short description on what the volunteer can assist with]
+        location ([str]): [location for code clinic]
+        vol ([str]): [the username of the volunteer]
+        start ([datetime]): [starting time of clinic]
+        end ([datetime]): [ending time of clinic]
+    """
     event = {
   'summary': summary_res,
   'location': location,
@@ -111,6 +135,11 @@ def user_email(username):
 
 
 def time_slot_volunteer():
+    """working with datetime to work with google api formatting
+
+    Returns:
+       format that google api uses
+    """
     year = 2020
     month = int(month_check())
     day = int(input("what day would you like to book the time slot: "))
@@ -121,6 +150,8 @@ def time_slot_volunteer():
 
 
 def month_validate(month):
+    """validating the months of the year and assigning a value based on month
+    """
     if month.lower() == 'january':
         return '1'
     elif month.lower() == 'february':
@@ -148,6 +179,8 @@ def month_validate(month):
 
 
 def month_check():
+    """checking if month chosen is valid
+    """
     month = input("What month would you like to book the time slot: ")
     if month.lower() in valid_months:
         return month_validate(month)
@@ -170,6 +203,11 @@ def user_input():
 
 
 def event_data_removal(event_id):
+    """removing file form data_files and removing event.
+
+    Args:
+        event_id ([str]): [a uid to find an event]
+    """
     with open('data_files/'+ str(event_id) +'.json', 'r+') as json_file:
         update = None
         with open('data_files/'+ str(event_id) +'.json', 'w') as outfile:
@@ -180,6 +218,12 @@ def event_data_removal(event_id):
 
 
 def command_handler(command, username):
+    """a command handler
+
+    Args:
+        command ([str]): [based on user input, what they want to do]
+        username ([str]): [username of user]
+    """
     if command == "student":
     # attendee_booking(event_id)
         pass
