@@ -17,7 +17,7 @@ def user_name():
 
 def user_check():
     user = ''
-    while user not in valid_users.lower():
+    while user not in valid_users:
         user = input("Are you a student or volunteer? ")
     return user
 
