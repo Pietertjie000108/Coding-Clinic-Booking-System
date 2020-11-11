@@ -1,7 +1,11 @@
 import json
 import os
 import random
+from calendar import monthrange
+import datetime
+from datetime import timedelta
 
+valid_months = ['january', 'february','march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
 valid_users = ['student', 'volunteer']
 valid_check = ['1', '2', '3', '4', '5']
 
@@ -19,19 +23,19 @@ def user_check():
     user = ''
     while user not in valid_users:
         user = input("Are you a student or volunteer? ")
-    return user
+    return user.lower()
 
 
 def random_id():
     id_rand = random.randint(0,999999999)
     return str(id_rand)
 
-
 def event_create(name):
     print("Insert event creation sequence here: ")
     event_id = random_id()
     loc = input("Where are you? WTC or W17: ")
     summary = input("What topics can you assist with?")
+    
 
     with open('data_files/'+event_id+'.json', 'w+') as outfile:
        
@@ -40,7 +44,9 @@ def event_create(name):
             'Title' : 'Code Clinic',
             'Desc': summary,
             'From: ': loc,
-            'Users': name}
+            'Users': name,
+            #'Date': date_time
+            }
 
         json.dump(test, outfile, sort_keys=True, indent=4)
 
