@@ -4,8 +4,9 @@ from functions import clinicians
 from functions import patients
 
 
-def initialize_user_token(user):
-    google_calendar_api.cred_gen(user)
+def initialize_user_token():
+ 
+    google_calendar_api.cred_gen()
 
 
 def clinician_options(username, service):
@@ -20,7 +21,7 @@ def clinician_options(username, service):
         option = user_check.show_clinician_options()
 
 
-def patient_options(username, option, service):
+def patient_options(username, service):
     option = user_check.show_patient_options()
     while option == 1 or option == 2 or option == 3:
         if option == 1:
@@ -28,13 +29,13 @@ def patient_options(username, option, service):
         if option == 2:
             patients.add_patient_slot_to_calender(service, username)
         if option == 3:
-            patients.delete_clinician_slot(service, username)
+            patients.delete_patient_slot(service, username)
         option = user_check.show_patient_options()
 
 
 def main():
     username = input('Please enter your username: ').lower()
-    initialize_user_token(username)
+    initialize_user_token()
     service = google_calendar_api.service_gen()
     while True:
         if user_check.is_clinician(username) == True:

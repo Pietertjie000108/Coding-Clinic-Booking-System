@@ -16,10 +16,10 @@ def show_patient_options():
 > Press [4] go back to main menu.
 > Press [5] to turn off program.\n''')
         option = input("Enter your option here: ")
-        if int(option) == 1 or int(option) == 2 or int(option) == 3 or int(option) == 4 or int(option) == 5:
+        if int(option) == 1 or int(option) == 2 or int(option) == 3 or int(option) == 4:
             return int(option)
         else:
-            print("Please enter either 1, 2, 3, 4 or 5.")
+            print("Please enter either 1, 2, 3, 4.")
 
 
 def show_clinician_options():
@@ -28,10 +28,9 @@ def show_clinician_options():
 > Press [1] to view your slots.
 > Press [2] to create slot.
 > Press [3] to delete a slot.
-> Press [4] go back to main menu.
-> Press [5] to turn off program\n''')
+> Press [4] go back to main menu.\n''')
         option = input("Enter your option here: ")
-        if int(option) == 1 or int(option) == 2 or int(option) == 3 or int(option) == 4 or int(option) == 5:
+        if int(option) == 1 or int(option) == 2 or int(option) == 3 or int(option) == 4:
             return int(option)
         else:
-            print("Please enter either 1, 2, 3, 4 or 5.")
+            print("Please enter either 1, 2, 3, 4.")
