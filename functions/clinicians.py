@@ -15,6 +15,7 @@ def create_events_from_service(service):
         print('No upcoming events found.')
     return events
 
+
 def get_all_code_clinic_slots(service):
     print("These are all the available slots you can choose from.\n")
     events = create_events_from_service(service)
@@ -77,13 +78,15 @@ def get_events_for_next_7_days_to_delete(username, service):
     events = events_result.get('items', [])
     if not events:
         print('No upcoming events found.')
+    count = 0
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         if event['summary'] == f'{username} - Code Clinic':
+            count = 1
             print(f"""Date: {start}
 Summary: {event['summary']}
 ID: {event['id']}\n""")
-    return events
+    return events, count
 
 
 def actual_delete_events(user_input, username, service):
@@ -95,14 +98,22 @@ def actual_delete_events(user_input, username, service):
 
 def delete_clinician_slot(service, username):
     print("These are the slots you've created: \n")
-    events = get_events_for_next_7_days_to_delete(username, service)
+    events, count = get_events_for_next_7_days_to_delete(username, service
+    )
+    if count == 0:
+        print("There are currently no available slots to delete.")
+        return
     while True:
         user_input = input("Enter the ID of the slot you want to delete: ")
         for event in events:
             event_id = event['id']
             if event_id == user_input:
+                # events, count = actual_delete_events(user_input, username, service)
                 actual_delete_events(user_input, username, service)
-                os.remove(f"data_files/" + user_input + ".json")
+                os.remove("data_files/" + user_input + ".json")
+                # if count == 0:
+                #    print("There are currently no available slots to delete.")
+                #    return
                 return
             if events[-1] == event:
                 print("Please enter a valid ID.")
