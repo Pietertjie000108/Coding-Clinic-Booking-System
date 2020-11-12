@@ -8,15 +8,16 @@ def get_all_code_clinic_slots_to_signup(service, username):
     events = create_events_from_service(service)
     count = 0
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
+        start = df.format_time_to_make_readable(event)
+        description = event['description']
         items_list =  event['attendees']
         if len(items_list) == 1 and username not in event['summary']:
             count = 1
             print(f"""Date: {start}
 Summary: {event['summary']}
+Description: {description}
 ID: {event['id']}\n""")
     return events, count
-
 
 def create_events_from_service(service):
     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
@@ -34,7 +35,8 @@ def get_all_code_clinic_slots_to_delete(service, username):
     events = create_events_from_service(service)
     count = 0
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
+        start = df.format_time_to_make_readable(event)
+        description = event['description']
         items_list =  event['attendees']
         if len(items_list) == 2:
             items_dict = items_list[0]
@@ -46,6 +48,7 @@ def get_all_code_clinic_slots_to_delete(service, username):
             count = 1
             print(f"""Date: {start}
 Summary: {event['summary']}
+Description: {description}
 ID: {event['id']}\n""")
     return events, count
 
@@ -103,6 +106,7 @@ def delete_patient_slot(service, username):
                 if count == 0:
                     print("There are currently no available slots to delete.")
                     return
+                return
             if events[-1] == event:
                 print("Please enter a valid ID.")
 
@@ -114,12 +118,23 @@ def get_patient_events_for_next_7_days(username, service):
                                         singleEvents=True, timeMax=time[1],
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
-    # pprint(events)
+    count = 0
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
+        start = df.format_time_to_make_readable(event)
+        description = event['description']
         items_list =  event['attendees']
-        items_dict = items_list[0]
-        if items_dict['displayName'] == username and username not in event['summary']:
+        if len(items_list) == 2:
+            items_dict = items_list[0]
+            items_dict2 = items_list[1]
+        else:    
+            items_dict = items_list[0]
+            items_dict2 = {'displayName': 'placeholder'}
+        
+        if (items_dict['displayName'] == username or items_dict2['displayName'] == username) and username not in event['summary']:
+            count = 1
             print(f"""Date: {start}
 Summary: {event['summary']}
+Description: {description}
 ID: {event['id']}\n""")
+    if count == 0:
+        print("Seems like you haven't signed up for any code clinics yet.\n")

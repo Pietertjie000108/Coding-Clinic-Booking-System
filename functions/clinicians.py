@@ -30,16 +30,16 @@ ID: {event['id']}\n""")
 
 
 def add_to_calender(service, username):
-    #colors = service.colors().get().execute()
+    colors = service.colors().get().execute()
     d_and_t = df.get_add_to_calender_input()
     descr = input('Please give a short description of what topics you are willing to help with: ')
     event_request_body = {
         'start': {
-            'dateTime': df.convert_to_RFC_datetime(2020, d_and_t[0], d_and_t[1], d_and_t[2][0], d_and_t[2][1]),
+            'dateTime': df.convert_to_RFC_datetime(2020, d_and_t[0], d_and_t[1], d_and_t[2][0]-2, d_and_t[2][1]),
             'timeZone': 'Africa/Johannesburg'
         },
         'end': {
-            'dateTime': df.convert_to_RFC_datetime(2020, d_and_t[0], d_and_t[1], d_and_t[3][0], d_and_t[3][1]),
+            'dateTime': df.convert_to_RFC_datetime(2020, d_and_t[0], d_and_t[1], d_and_t[3][0]-2, d_and_t[3][1]),
             'timeZone': 'Africa/Johannesburg'
         },
         'summary': f"{username} - Code Clinic",
@@ -55,6 +55,7 @@ def add_to_calender(service, username):
             'organizer': True,
             'email': f'{username}@student.wethinkcode.co.za',
             'optional': True,
+            'responseStatus': 'accepted'
             }
         ]
     }
@@ -63,6 +64,7 @@ def add_to_calender(service, username):
     sendNotifications = True
     sendUpdate = 'all'
     response = service.events().insert(calendarId='primary', sendUpdates='all', body=event_request_body).execute()
+    print("\nYour slot has been created...\n")
     with open('data_files/'+response['id']+'.json', 'w+') as outfile:
         json.dump(response, outfile, sort_keys=True, indent=4)
     print("\nYour slot has been created...\n")
@@ -80,11 +82,13 @@ def get_events_for_next_7_days_to_delete(username, service):
         print('No upcoming events found.')
     count = 0
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
+        start = df.format_time_to_make_readable(event)
+        description = event['description']
         if event['summary'] == f'{username} - Code Clinic':
             count = 1
             print(f"""Date: {start}
 Summary: {event['summary']}
+Description: {description}
 ID: {event['id']}\n""")
     return events, count
 
@@ -92,14 +96,12 @@ ID: {event['id']}\n""")
 def actual_delete_events(user_input, username, service):
     service.events().delete(calendarId='primary', eventId=user_input, sendUpdates='all').execute()
     print(f"\nSlot {user_input} was deleted...")
-    # print("Here are your current slots.\n")
-    events = get_events_for_next_7_days_to_delete(username, service)
+    events, count = get_events_for_next_7_days_to_delete(username, service)
+    return events, count
 
 
 def delete_clinician_slot(service, username):
-    print("These are the slots you've created: \n")
-    events, count = get_events_for_next_7_days_to_delete(username, service
-    )
+    events, count = get_events_for_next_7_days_to_delete(username, service)
     if count == 0:
         print("There are currently no available slots to delete.")
         return
@@ -108,12 +110,9 @@ def delete_clinician_slot(service, username):
         for event in events:
             event_id = event['id']
             if event_id == user_input:
-                # events, count = actual_delete_events(user_input, username, service)
-                actual_delete_events(user_input, username, service)
-                os.remove("data_files/" + user_input + ".json")
-                # if count == 0:
-                #    print("There are currently no available slots to delete.")
-                #    return
+                events1, count1 = actual_delete_events(user_input, username, service)
+                if count1 == 0:
+                    print("There are currently no available slots to delete.")
                 return
             if events[-1] == event:
                 print("Please enter a valid ID.")
@@ -131,7 +130,6 @@ def get_events_for_next_7_days(service):
     if not events:
         print('No upcoming events found.')
     for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
+        start = df.format_time_to_make_readable(event)
         end = event['end'].get('dateTime', event['start'].get('date'))
         print(f"Starts at: {start}, and ends at: {end} you must: {event['summary']}")
-    # pprint(events)

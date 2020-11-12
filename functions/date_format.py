@@ -1,10 +1,17 @@
 import datetime
 from datetime import timedelta
 from calendar import monthrange
+import re
 
 """
 Data formats
 """
+def format_time_to_make_readable(event):
+    start1 = event['start'].get('dateTime', event['start'].get('date'))
+    start = re.split("[-T:+]",start1)
+    return f'{start[0]}-{start[1]}-{start[2]} @ {start[3]}:{start[4]}'
+
+
 def convert_to_RFC_datetime(year=1900, month=1, day=1, hour=0, minute=0):
     dt = datetime.datetime(year, month, day, hour, minute, 0).isoformat() + 'Z'
     return dt
