@@ -246,7 +246,7 @@ def get_patient_events_for_next_7_days(username):
             print(f"""Date: {start}
 Summary: {event['summary']}
 ID: {event['id']}\n""")
-
+            # pprint(items_list)
     
 
 def actual_delete_events(user_input, username, service):
@@ -315,4 +315,3 @@ if __name__ == '__main__':
                     delete_clinician_slot(service, username)
                 option = show_patient_options(username)
     
-    # get_patient_events_for_next_7_days(username)
