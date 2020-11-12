@@ -12,6 +12,9 @@ def initialize_user_token():
 
 
 def clinician_options(username, service):
+    """
+    executes the clinicians functions depending on input
+    """
     option = user_check.show_clinician_options()
     while option == 1 or option == 2 or option == 3 or option == 5:
         if option == 1:
@@ -28,6 +31,9 @@ def clinician_options(username, service):
 
 
 def patient_options(username, service):
+    """
+    executes the patients functions depending on input
+    """
     option = user_check.show_patient_options()
     while option == 1 or option == 2 or option == 3 or option == 5:
         if option == 1:

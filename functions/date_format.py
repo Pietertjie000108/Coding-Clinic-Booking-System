@@ -7,18 +7,26 @@ import re
 Data formats
 """
 def format_time_to_make_readable(event):
+    """
+    displaying the time in a readable format
+    """
     start1 = event['start'].get('dateTime', event['start'].get('date'))
     start = re.split("[-T:+]",start1)
     return f'{start[0]}-{start[1]}-{start[2]} @ {start[3]}:{start[4]}'
 
 
 def convert_to_RFC_datetime(year=1900, month=1, day=1, hour=0, minute=0):
+    """
+    converting date data into a format used by google calendar api
+    """
     dt = datetime.datetime(year, month, day, hour, minute, 0).isoformat() + 'Z'
     return dt
 
 
 def get_current_and_7_days_date_and_time_in_RFC3339():
-    
+    """
+    *insert docstring here*
+    """
     date = datetime.datetime.utcnow()
     date_in_7_days = date + timedelta(7)
     date_with_timezone = date.isoformat("T") + "Z"
@@ -28,6 +36,12 @@ def get_current_and_7_days_date_and_time_in_RFC3339():
 
 
 def get_add_to_calender_input():
+    """
+    getting data data from user inputs
+    validating the month the user inputs
+    validating the day the user inputs
+    as well as the time
+    """
     valid_months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
 
     now = datetime.datetime.now()

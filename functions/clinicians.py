@@ -6,6 +6,11 @@ import os
 clinician functs
 """
 def create_events_from_service(service):
+    """
+    creating/ getting events from the google api
+    if no events are found it shows no upcoming events.
+    else ir returns any events present.
+    """
     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId='primary', timeMin=time[0],
                                         singleEvents=True, timeMax=time[1],
@@ -16,20 +21,27 @@ def create_events_from_service(service):
     return events
 
 
-def get_all_code_clinic_slots(service):
-    print("These are all the available slots you can choose from.\n")
-    events = create_events_from_service(service)
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        items_list =  event['attendees']
-        if len(items_list) == 1:
-            print(f"""Date: {start}
-Summary: {event['summary']}
-ID: {event['id']}\n""")
-    return events
+# def get_all_code_clinic_slots(service):
+#     """
+#     """
+#     print("These are all the available slots you can choose from.\n")
+#     events = create_events_from_service(service)
+#     for event in events:
+#         start = event['start'].get('dateTime', event['start'].get('date'))
+#         items_list =  event['attendees']
+#         if len(items_list) == 1:
+#             print(f"""Date: {start}
+# Summary: {event['summary']}
+# ID: {event['id']}\n""")
+#     return events
 
 
 def add_to_calender(service, username):
+    """
+    Adding an event to Google Calendar using the format the calendar uses when setting up an event.
+    using the user input from (get_add_to_calendar_input) 
+    also stores a .json file in data_files
+    """
     colors = service.colors().get().execute()
     d_and_t = df.get_add_to_calender_input()
     descr = input('Please give a short description of what topics you are willing to help with: ')

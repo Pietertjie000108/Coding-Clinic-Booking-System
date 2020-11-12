@@ -1,4 +1,7 @@
 def is_clinician(username):
+    """
+    doing a check if the user is a patient or a clinician.
+    """
     while True:
         title = input(f"Hello {username}, do you want to sign-up as a clinician (C) or patient (P)?: ").lower()
         if title == 'c' or title == 'p':
