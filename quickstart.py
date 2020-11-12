@@ -8,6 +8,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+import json
 
 # If modifying these scopes, delete the file token.pickle.
 CLIENT_SECRET_FILE = 'client_secret_GoogleCloudDemo.json'
@@ -15,17 +16,18 @@ API_NAME = 'calender'
 API_VERSION = 'v3'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-
-def create_auth_service():
+service = ''
+def create_auth_service(username):
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
     """
+    global service
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
+    if os.path.exists('tokens/'+username+'.pickle'):
+        with open('tokens/'+username+'.pickle', 'rb') as token:
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -33,14 +35,14 @@ def create_auth_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                'credentials/client_secret.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
+        with open('tokens/'+username+'.pickle', 'wb') as token:
             pickle.dump(creds, token)
     
-    return build('calendar', 'v3', credentials=creds)
-
+    service = build('calendar', 'v3', credentials=creds)
+    return service
 
 def convert_to_RFC_datetime(year=1900, month=1, day=1, hour=0, minute=0):
     dt = datetime.datetime(year, month, day, hour, minute, 0).isoformat() + 'Z'
@@ -110,16 +112,16 @@ def update_slot_with_patient(user_input, username, event, service):
     # event_request_body = 
 
 
-def add_patient_slot_to_calender(service, username):
-    get_all_code_clinic_slots(service)
-    uid = input("Which Code Clinic slot would you like to sign-up to: ")
-    for event in events:
-        event_id = event['id']
-        if event_id == user_input:
-            update_slot_with_patient(user_input, username, event, service)
-            return
-        if events[-1] == event:
-            print("Please enter a valid ID.")
+# def add_patient_slot_to_calender(service, username):
+#     get_all_code_clinic_slots(service)
+#     uid = input("Which Code Clinic slot would you like to sign-up to: ")
+#     for event in events:
+#         event_id = event['id']
+#         if event_id == user_input:
+#             update_slot_with_patient(user_input, username, event, service)
+#             return
+#         if events[-1] == event:
+#             print("Please enter a valid ID.")
 
 
 def get_current_and_7_days_date_and_time_in_RFC3339():
@@ -166,6 +168,8 @@ def add_to_calender(service, username):
     sendNotifications = True
     sendUpdate = 'all'
     response = service.events().insert(calendarId='primary', sendUpdates='all', body=event_request_body).execute()
+    with open('data_files/'+response['id']+'.json', 'w+') as outfile:
+        json.dump(response, outfile, sort_keys=True, indent=4)
     print("\nYour slot has been created...\n")
     get_events_for_next_7_days_to_delete(username)
 
@@ -208,6 +212,7 @@ def show_clinician_options(username):
 
 
 def get_events_for_next_7_days_to_delete(username):
+    global service
     print("These are your current slots: \n")
     time = get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId='primary', timeMin=time[0],
@@ -226,6 +231,7 @@ ID: {event['id']}\n""")
 
 
 def get_patient_events_for_next_7_days(username):
+    global service
     print("These are the clinics you've signed up for: \n")
     time = get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId='primary', timeMin=time[0],
@@ -260,12 +266,14 @@ def delete_clinician_slot(service, username):
             event_id = event['id']
             if event_id == user_input:
                 actual_delete_events(user_input, username, service)
+                os.remove(f"data_files/" + user_input + ".json")
                 return
             if events[-1] == event:
                 print("Please enter a valid ID.")
 
 
 def get_events_for_next_7_days():
+    global service
     print("- These are your upcoming events for the next 7 days - \n\n")
 
     time = get_current_and_7_days_date_and_time_in_RFC3339()
@@ -281,33 +289,3 @@ def get_events_for_next_7_days():
         end = event['end'].get('dateTime', event['start'].get('date'))
         print(f"Starts at: {start}, and ends at: {end} you must: {event['summary']}")
     # pprint(events)
-
-
-if __name__ == '__main__':
-    service = create_auth_service()
-    username = input('Please enter your username: ').lower()
-    do_clinician = True
-    while True:
-        if is_clinician(username) == True:
-            # while True:
-            option = show_clinician_options(username)
-            while option == 1 or option == 2 or option == 3:
-                if option == 1:
-                    get_events_for_next_7_days_to_delete(username)
-                if option == 2:
-                    add_to_calender(service, username)
-                if option == 3:
-                    delete_clinician_slot(service, username)
-                option = show_clinician_options(username)
-        else:
-            option = show_patient_options(username)
-            while option == 1 or option == 2 or option == 3:
-                if option == 1:
-                    get_patient_events_for_next_7_days(username)
-                if option == 2:
-                    add_patient_slot_to_calender(service, username)
-                if option == 3:
-                    delete_clinician_slot(service, username)
-                option = show_patient_options(username)
-    
-    # get_patient_events_for_next_7_days(username)
