@@ -5,7 +5,9 @@ from functions import patients
 
 
 def initialize_user_token():
- 
+    """
+    generates token for api
+    """
     google_calendar_api.cred_gen()
 
 
