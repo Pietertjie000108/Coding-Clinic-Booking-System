@@ -1,4 +1,4 @@
 # Coding-Clinic-Booking-System
 
-# lib: all the shell scripts
-# bin: all python scripts etc
+# bin: all the shell scripts
+# src: all python scripts etc
