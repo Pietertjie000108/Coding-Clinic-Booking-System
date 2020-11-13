@@ -1,4 +1,6 @@
 from functions import date_format as df
+import json
+import os
 
 """
 patient functs
@@ -85,6 +87,8 @@ def add_patient_slot_to_calender(service, username):
                 event2 = service.events().get(calendarId='primary', eventId=uid).execute()
                 update_slot_with_patient(uid, username, event2, service)
                 get_patient_events_for_next_7_days(username, service)
+                with open('patient_files/'+event2['id']+'.json', 'w+') as outfile:
+                    json.dump(event2, outfile, sort_keys=True, indent=4)
                 return
             if events[-1] == event:
                 print("Please enter a valid ID.")
@@ -101,6 +105,7 @@ def delete_patient_slot(service, username):
             event_id = event['id']
             if event_id == uid:
                 event2 = service.events().get(calendarId='primary', eventId=uid).execute()
+                os.remove("patient_files/" + event_id + ".json")
                 update_slot_with_deleted_patient(uid, username, event2, service)
                 events, count = get_all_code_clinic_slots_to_delete(service, username)
                 if count == 0:

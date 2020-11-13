@@ -77,7 +77,7 @@ def add_to_calender(service, username):
     sendUpdate = 'all'
     response = service.events().insert(calendarId='primary', sendUpdates='all', body=event_request_body).execute()
     print("\nYour slot has been created...\n")
-    with open('data_files/'+response['id']+'.json', 'w+') as outfile:
+    with open('clinician_files/'+response['id']+'.json', 'w+') as outfile:
         json.dump(response, outfile, sort_keys=True, indent=4)
     print("\nYour slot has been created...\n")
     get_events_for_next_7_days_to_delete(username, service)
@@ -123,6 +123,7 @@ def delete_clinician_slot(service, username):
             event_id = event['id']
             if event_id == user_input:
                 events1, count1 = actual_delete_events(user_input, username, service)
+                os.remove("clinician_files/" + event_id + ".json")
                 if count1 == 0:
                     print("There are currently no available slots to delete.")
                 return
