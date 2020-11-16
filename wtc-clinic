@@ -1,0 +1,11 @@
+    echo "Please enter 'wtc-clinic start' into the terminial" 
+    /usr/bin/python3 /homes/ndooge/group_project/Coding-Clinic-Booking-System/clinic_with_imports.py
+    case $1 in
+            start)
+                 
+                ;;
+            off)
+                echo "Good bye"
+                ;;
+
+    esac
