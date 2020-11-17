@@ -1,23 +1,26 @@
-    echo "For help enter 'wtc-clinic help' into your terminal" 
+case "$1" in
+patient)
+    case "$2" in 
+    view)
+        echo "patient view"
+        ;;
+    create)
+        echo "patient create"
+        ;;
     
-    case $1 in
-            start)
-               /usr/bin/python3 /homes/ndooge/group_project/Coding-Clinic-Booking-System/clinic_with_imports.py  
-                ;;
-            help)
-                echo "'wtc-clinic init' :for First time users or loading new
-                    user config
-
-Example of usage for clinicians:
-                'wtc-clinic clinicician view' :to view your open & booked slots'
-                 'wtc-clinic clinicician view_booked' :to view your booked slots'
-                 'wtc-clinic clinicician view_open' :to view your un-booked (open) slots'"
-                ;;
-            init)
-                echo "creating user pickle"
-                ;;
-              off)
-                echo "Good bye"
-                ;;
-
     esac
+    ;;
+clinician)
+
+    case "$2" in
+    view)
+        echo "clinician view"
+        ;;
+
+    create)
+        echo "clinician create"
+        ;;
+    esac
+;;
+esac
+    
