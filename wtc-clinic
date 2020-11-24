@@ -1,22 +1,26 @@
 case "$1" in
+
 patient)
     case "$2" in 
     view)
         python3 $PWD/functions/patients/view_patient_slots.py $3
         ;;
+
     slots)
         python3 $PWD/functions/patients/view_slots_for_patient_slots.py $3
         ;;
+
     signup)
         python3 $PWD/functions/patients/signup_to_patient_slot.py $3 $4 $5
         ;;
+
     delete)
         python3 $PWD/functions/patients/delete_patient_slots.py $3 $4
         ;;
     esac
     ;;
-clinician)
 
+clinician)
     case "$2" in
     view)
         python3 $PWD/functions/clinicians/view_clinician_slots.py $3
