@@ -1,5 +1,4 @@
 
-echo alias wtc-clinic="$PWD/wtc-clinic" >> ~/.bashrc
-echo alias wtc-clinic="$PWD/wtc-clinic" >> ~/.zshrc
-​
+alias wtc-clinic="$PWD/wtc-clinic" >> ~/.bashrc
+alias wtc-clinic="$PWD/wtc-clinic" >> ~/.zshr
 chmod +x wtc-clinic
