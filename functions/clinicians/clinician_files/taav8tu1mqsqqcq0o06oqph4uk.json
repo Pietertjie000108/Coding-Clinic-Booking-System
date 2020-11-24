@@ -1,0 +1,43 @@
+{
+    "attendees": [
+        {
+            "displayName": "mnnyembe",
+            "email": "mnnyembe@student.wethinkcode.co.za",
+            "optional": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-11-20T12:55:03.000Z",
+    "creator": {
+        "email": "wethinkmock@gmail.com",
+        "self": true
+    },
+    "description": "empty",
+    "end": {
+        "dateTime": "2020-11-21T16:04:00+02:00",
+        "timeZone": "Africa/Johannesburg"
+    },
+    "etag": "\"3211753807712000\"",
+    "guestsCanModify": true,
+    "htmlLink": "https://www.google.com/calendar/event?eid=dGFhdjh0dTFtcXNxcWNxMG8wNm9xcGg0dWsgd2V0aGlua21vY2tAbQ",
+    "iCalUID": "taav8tu1mqsqqcq0o06oqph4uk@google.com",
+    "id": "taav8tu1mqsqqcq0o06oqph4uk",
+    "kind": "calendar#event",
+    "location": "WTC",
+    "organizer": {
+        "email": "wethinkmock@gmail.com",
+        "self": true
+    },
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-11-21T15:34:00+02:00",
+        "timeZone": "Africa/Johannesburg"
+    },
+    "status": "confirmed",
+    "summary": "mnnyembe - Code Clinic",
+    "updated": "2020-11-20T12:55:03.856Z",
+    "visibility": "public"
+}

@@ -1,0 +1,43 @@
+{
+    "attendees": [
+        {
+            "displayName": "jkokot",
+            "email": "jkokot@student.wethinkcode.co.za",
+            "optional": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-11-19T17:43:25.000Z",
+    "creator": {
+        "email": "wethinkmock@gmail.com",
+        "self": true
+    },
+    "description": "recursion",
+    "end": {
+        "dateTime": "2020-11-20T17:30:00+02:00",
+        "timeZone": "Africa/Johannesburg"
+    },
+    "etag": "\"3211615611670000\"",
+    "guestsCanModify": true,
+    "htmlLink": "https://www.google.com/calendar/event?eid=bjJsamFqZmdvYnNqYTdrYXV2OWVlMWpjZTggd2V0aGlua21vY2tAbQ",
+    "iCalUID": "n2ljajfgobsja7kauv9ee1jce8@google.com",
+    "id": "n2ljajfgobsja7kauv9ee1jce8",
+    "kind": "calendar#event",
+    "location": "WTC",
+    "organizer": {
+        "email": "wethinkmock@gmail.com",
+        "self": true
+    },
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-11-20T17:00:00+02:00",
+        "timeZone": "Africa/Johannesburg"
+    },
+    "status": "confirmed",
+    "summary": "jkokot - Code Clinic",
+    "updated": "2020-11-19T17:43:25.835Z",
+    "visibility": "public"
+}

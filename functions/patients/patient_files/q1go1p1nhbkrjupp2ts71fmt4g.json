@@ -1,0 +1,49 @@
+{
+    "attendees": [
+        {
+            "displayName": "taismail",
+            "email": "taismail@student.wethinkcode.co.za",
+            "optional": true,
+            "responseStatus": "accepted"
+        },
+        {
+            "displayName": "mnnyembe",
+            "email": "mnnyembe@student.wethinkcode.co.za",
+            "optional": true,
+            "responseStatus": "accepted"
+        }
+    ],
+    "created": "2020-11-13T08:20:39.000Z",
+    "creator": {
+        "email": "wethinkmock@gmail.com",
+        "self": true
+    },
+    "description": "loopy loops",
+    "end": {
+        "dateTime": "2020-11-21T12:30:00+02:00",
+        "timeZone": "Africa/Johannesburg"
+    },
+    "etag": "\"3211619651670000\"",
+    "guestsCanModify": true,
+    "htmlLink": "https://www.google.com/calendar/event?eid=cTFnbzFwMW5oYmtyanVwcDJ0czcxZm10NGcgd2V0aGlua21vY2tAbQ",
+    "iCalUID": "q1go1p1nhbkrjupp2ts71fmt4g@google.com",
+    "id": "q1go1p1nhbkrjupp2ts71fmt4g",
+    "kind": "calendar#event",
+    "location": "WTC",
+    "organizer": {
+        "email": "wethinkmock@gmail.com",
+        "self": true
+    },
+    "reminders": {
+        "useDefault": true
+    },
+    "sequence": 0,
+    "start": {
+        "dateTime": "2020-11-21T12:00:00+02:00",
+        "timeZone": "Africa/Johannesburg"
+    },
+    "status": "confirmed",
+    "summary": "taismail - Code Clinic",
+    "updated": "2020-11-19T18:17:05.835Z",
+    "visibility": "public"
+}
