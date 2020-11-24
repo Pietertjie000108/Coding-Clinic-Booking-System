@@ -1,0 +1,26 @@
+case "$1" in
+patient)
+    case "$2" in 
+    view)
+        echo "patient view"
+        ;;
+    create)
+        echo "patient create"
+        ;;
+    
+    esac
+    ;;
+clinician)
+
+    case "$2" in
+    view)
+        echo "clinician view"
+        ;;
+
+    create)
+        echo "clinician create"
+        ;;
+    esac
+;;
+esac
+    
