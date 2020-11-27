@@ -23,7 +23,7 @@ def delete_patient_slot(service, username):
     events, count = get_events.get_all_code_clinic_slots_to_delete_without_printing(service, username)
     if count == 0:
         print("There are currently no available slots to delete.")
-        return 0
+        return
     while True:
         uid = argv[2]
         for event in events:
@@ -35,11 +35,11 @@ def delete_patient_slot(service, username):
                 events, count = get_events.get_all_code_clinic_slots_to_delete(service, username)
                 if count == 0:
                     print("You don't have anymore slots.")
-                    return 0
-                return 0
+                    return
+                return
             if events[-1] == event:
                 print("Please enter a valid ID.")
-                return 0
+                return
 
     
 if __name__ == '__main__':
