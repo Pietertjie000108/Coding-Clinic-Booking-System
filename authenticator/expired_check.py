@@ -20,6 +20,4 @@ def is_program_expired():
                     return True
                 else :
                     return False
-
-
-is_program_expired()
+# is_program_expired()
