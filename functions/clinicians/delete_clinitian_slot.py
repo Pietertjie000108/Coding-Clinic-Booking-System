@@ -19,7 +19,7 @@ def delete_clinician_slot(service, username):
             event_id = event['id']
             if event_id == user_input:
                 events1, count1 = actual_delete_events(user_input, username, service)
-                # os.remove("clinician_files/" + event_id + ".json")
+                os.remove("clinician_files/" + event_id + ".json")
                 if count1 == 0:
                     print("You currently don't have any slots created.")
                 return

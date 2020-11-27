@@ -67,10 +67,12 @@ def add_to_calender(service, username):
     if overlaps:
         response = service.events().insert(calendarId=get_events.calendar_id, sendUpdates='all', body=event_request_body).execute()
         print("\nYour slot has been created...\n")
+        event_id = response['id']
+        with open('clinician_files/' + event_id + '.json', 'w+') as outfile:
+            json.dump(response, outfile, sort_keys=True, indent=4)
+            outfile.close()
     else:
         print("You've already created a slot for this time. Please choose another time...")
-    # with open('clinician_files/'+response['id']+'.json', 'w+') as outfile:
-    #     json.dump(response, outfile, sort_keys=True, indent=4)
     events, count = get_events.get_events_for_next_7_days_to_delete(username, service)
     if count == 0:
         print("There are currently no available slots for Code Clinics. Check again later.")
