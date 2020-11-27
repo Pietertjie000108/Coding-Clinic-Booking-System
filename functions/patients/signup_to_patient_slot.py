@@ -14,7 +14,7 @@ def update_slot_with_patient(uid, username, event, service):
     descr = argv[2]
     if len(event['attendees']) == 2:
         print(f"\nThe slot you tried signing up for is already taken. Please choose another slot.")
-        return
+        return 0
     response = {'displayName': username,
     'email': f'{username}@student.wethinkcode.co.za',
     'optional': True,
@@ -39,10 +39,10 @@ def add_patient_slot_to_calender(service, username):
                 with open('patient_files/'+ event_id +'.json', 'w+') as outfile:
                     json.dump(event2, outfile, sort_keys=True, indent=4)
                     outfile.close()
-                return
+                return 0
             if events[-1] == event:
                 print("Please enter a valid ID.")
-                return
+                return 0
 
 
 if __name__ == '__main__':

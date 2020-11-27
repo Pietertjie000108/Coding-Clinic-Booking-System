@@ -22,7 +22,6 @@ def main():
                 file_ob.write("\n"+user + "," + pswd + "")
             else: 
                 print("It's a trap!!!")
-
                 
 
 def new_username():
@@ -75,5 +74,3 @@ def user_and_pass():
     user = new_username()
     passwd = password()
     return user,passwd
-
-main()
