@@ -8,9 +8,8 @@ sys.path.insert(0, parentdir)
 def create_username_file(username): 
     start_date = datetime.datetime.now()
     with open("username_file", 'w') as file:
-        file.write(username + "\n")
-        # file.write(start_date.strftime("%Y_%m_%d_%H_%M_%S"))
-        file.write(start_date.strftime("%H"))
+        file.write(start_date.strftime("%Y_%m_%d_%H_%M_%S\n"))
+        file.write(username)
         file.close()
 
             #make into own function to be called. bool return values
