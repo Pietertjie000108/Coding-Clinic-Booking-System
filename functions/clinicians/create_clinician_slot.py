@@ -68,7 +68,7 @@ def add_to_calender(service, username):
         response = service.events().insert(calendarId=get_events.calendar_id, sendUpdates='all', body=event_request_body).execute()
         print("\nYour slot has been created...\n")
         event_id = response['id']
-        with open('clinician_files/' + event_id + '.json', 'w+') as outfile:
+        with open('functions/clinicians/clinician_files/' + event_id + '.json', 'w+') as outfile:
             json.dump(response, outfile, sort_keys=True, indent=4)
             outfile.close()
     else:
