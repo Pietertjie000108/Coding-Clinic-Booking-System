@@ -19,9 +19,9 @@ def main():
             user = username
             pswd = encrypter.encrypt_password(password)
             if robot_test() == False:
-                file_ob.write("\n"+user + "," + pswd + "")
+                return file_ob.write("\n"+user + "," + pswd + "")
             else: 
-                print("It's a trap!!!")
+                return("It's a trap!!!")
                 
 
 def new_username():
