@@ -1,26 +1,3 @@
-# def reset_pass():
-#     username = input("Please enter your username: ")
-#     username = encrypter.encrypt_username(username)
-#     with open("users.txt", 'r') as usernames:    
-#         if username in usernames.read():
-#             return username
-
-
-# def redo_user_list(username):
-#     with open("users.txt", "r") as file:
-#         lines = file.readlines()
-#     with open("users.txt", "w") as file:
-#         for line in lines:
-#             if username in line:
-#                 pass
-#             else :
-#                 file.write(line)
-
-# def main_reset():
-#     username = reset_pass()
-#     redo_user_list(username)
-
-
 def reset_main():
     username = input("Please enter your username: ")
     if len(username) > 0:

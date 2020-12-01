@@ -17,7 +17,7 @@ def main():
 def user_find(file):
     username = input("Enter your username: ")
     for row in file:
-        if row[0] == username:
+        if row[0] == username.lower():
             print("username found", username)
             user_found = [row[0],row[1]]
             pass_check(user_found)
