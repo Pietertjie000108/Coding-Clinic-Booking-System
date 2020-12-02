@@ -36,9 +36,6 @@ def add_patient_slot_to_calender(service, username):
                 event2 = service.events().get(calendarId=get_events.calendar_id, eventId=uid).execute()
                 update_slot_with_patient(uid, username, event2, service)
                 get_events.get_all_code_clinic_slots_to_delete(service, username)
-                # with open("functions/patient/patient_files/"+ event_id +'.json', 'w+') as outfile:
-                #     json.dump(event2, outfile, sort_keys=True, indent=4)
-                #     outfile.close()
                 return
             if events[-1] == event:
                 print("Please enter a valid ID.")

@@ -3,6 +3,9 @@ import csv
 
 
 def is_program_expired():
+    """
+    registry expiration check
+    """
     # Query date of first lauch in given file
     if os.path.exists("username_file"):
         with open("username_file", 'r') as file:
@@ -16,7 +19,9 @@ def is_program_expired():
                 if datetime.datetime.now() > expire_date:
                     file.close()
                     os.remove("username_file")
-                    print("Your login has expired.")
+                    print("Your login has expired. Please login again.")
                     return True
                 else :
                     return False
+
+is_program_expired()

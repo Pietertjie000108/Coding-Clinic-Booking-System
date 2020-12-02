@@ -76,10 +76,6 @@ def add_to_calender(service, username):
     if overlaps == False:
         response = service.events().insert(calendarId=get_events.calendar_id, sendUpdates='all', body=event_request_body).execute()
         print("\nYour slot has been created...\n")
-        # event_id = response['id']
-        # with open('functions/clinicians/clinician_files/' + event_id + '.json', 'w+') as outfile:
-        #     json.dump(response, outfile, sort_keys=True, indent=4)
-        #     outfile.close()
     else:
         print("You've already created a slot for this time. Please choose another time...")
     events, count = get_events.get_events_for_next_7_days_to_delete(username, service)
