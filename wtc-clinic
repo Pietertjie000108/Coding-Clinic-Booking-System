@@ -2,6 +2,12 @@ CDIR=`readlink -f .`
 
 
 case "$1" in
+login)
+    python3 $CDIR/authenticator/pass_auth.py
+    ;;
+register)
+    python3 $CDIR/authenticator/new_user.py
+    ;;
 
 patient)
     case "$2" in 
@@ -54,7 +60,10 @@ clinician)
     ;;
 
 *)
-    echo "Clinician functionality:
+    echo "'wtc-clinic register'             For first time users 
+'wtc-clinic login'                Login before each use. 
+
+Clinician functionality:
         type: 'wtc-clinic clinician' into terminal
         
 Patient functionality:
