@@ -25,7 +25,7 @@ def delete_patient_slot(service, username):
         print("There are currently no available slots to delete.")
         return
     while True:
-        uid = argv[2]
+        uid = argv[1]
         for event in events:
             event_id = event['id']
             if event_id == uid and len(event['attendees']) == 2:
@@ -43,5 +43,5 @@ def delete_patient_slot(service, username):
     
 if __name__ == '__main__':
     service = calender_api.create_auth_service()
-    username = argv[1]
+    username = get_events.get_username()
     delete_patient_slot(service, username)

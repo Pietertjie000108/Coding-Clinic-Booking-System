@@ -199,7 +199,7 @@ def get_all_code_clinic_slots_to_delete(service, username):
         count ([int]): either 1 or 0, returns 1 if there where events returned and 0 if there arent any events.
     """
 
-    print("These are the clinics you've signed up for: \n")
+    print("\nThese are the clinics you've signed up for: \n")
     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId=calendar_id, timeMin=time[0],
                                         singleEvents=True, timeMax=time[1],
@@ -247,3 +247,11 @@ def get_all_code_clinic_slots_to_delete_without_printing(service, username):
         if (items_dict['displayName'] == username or items_dict2['displayName'] == username) and username not in event['summary']:
             count = 1
     return events, count
+
+
+def get_username():
+    f = open("username_file", "r")
+    username_list = (f.readlines())
+    f.close()
+    username = username_list[1]
+    return username

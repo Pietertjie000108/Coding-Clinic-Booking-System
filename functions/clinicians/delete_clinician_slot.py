@@ -14,7 +14,7 @@ from sys import argv
 def delete_clinician_slot(service, username):
     events = get_events.simple_get_events_without_printing_anything(username, service)
     while True:
-        user_input = argv[2]
+        user_input = argv[1]
         for event in events:
             event_id = event['id']
             if event_id == user_input:
@@ -42,5 +42,5 @@ def actual_delete_events(user_input, username, service):
 
 if __name__ == '__main__':
     service = calender_api.create_auth_service()
-    username = argv[1]
+    username = get_events.get_username()
     delete_clinician_slot(service, username)

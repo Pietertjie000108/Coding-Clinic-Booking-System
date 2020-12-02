@@ -14,10 +14,10 @@ from sys import argv
 
 if __name__ == '__main__':
     service = calender_api.create_auth_service()
-    username = argv[1]
+    username = get_events.get_username()
     events, count = get_events.get_events_for_next_7_days_to_delete(username, service)
     if count == 0:
-        print("There are currently no available slots for Code Clinics. Check again later.")
+        print("You currently don't have any slots created.")
 
     # page_token = None
     # while True:
