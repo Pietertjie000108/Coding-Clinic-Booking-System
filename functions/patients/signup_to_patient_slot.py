@@ -7,6 +7,7 @@ sys.path.insert(0, parentdir)
 import calender_api
 import get_events
 import date_format as df
+import auth_interface
 import json
 from sys import argv
 
@@ -19,9 +20,9 @@ def update_slot_with_patient(uid, username, event, service):
     'email': f'{username}@student.wethinkcode.co.za',
     'optional': True,
     'responseStatus': 'accepted',
-    'description': descr,
     }
     event['attendees'].append(response)
+    event['description'] = descr
     service.events().update(calendarId=get_events.calendar_id, eventId=uid, body=event, sendUpdates='all').execute()
     print(f"\nYou have successfully signed up for {event['summary']}...")
 
@@ -42,8 +43,13 @@ def add_patient_slot_to_calender(service, username):
                 return
 
 
-if __name__ == '__main__':
+def main_function():
     service = calender_api.create_auth_service()
-    # username = argv[1]
+    if auth_interface.check_if_credentials_have_expired():
+        return
     username = get_events.get_username()
     add_patient_slot_to_calender(service, username)
+
+
+if __name__ == '__main__':
+    main_function()

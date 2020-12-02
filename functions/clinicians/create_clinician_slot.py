@@ -9,6 +9,7 @@ import get_events
 import date_format as df
 import json
 from pprint import pprint
+import auth_interface
 import datetime
 import re
 import os
@@ -84,7 +85,13 @@ def add_to_calender(service, username):
         return
 
 
-if __name__ == '__main__':
+def main_function():
     service = calender_api.create_auth_service()
+    if auth_interface.check_if_credentials_have_expired():
+        return
     username = get_events.get_username()
     add_to_calender(service, username)
+
+
+if __name__ == '__main__':
+    main_function()
