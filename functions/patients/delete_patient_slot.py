@@ -25,12 +25,12 @@ def delete_patient_slot(service, username):
         print("There are currently no available slots to delete.")
         return
     while True:
-        uid = argv[2]
+        uid = argv[1]
         for event in events:
             event_id = event['id']
             if event_id == uid and len(event['attendees']) == 2:
                 event2 = service.events().get(calendarId=get_events.calendar_id, eventId=uid).execute()
-                os.remove("functions/patient/patient_files/" + event_id + ".json")
+                # os.remove("functions/patient/patient_files/" + event_id + ".json")
                 update_slot_with_deleted_patient(uid, username, event2, service)
                 events, count = get_events.get_all_code_clinic_slots_to_delete(service, username)
                 if count == 0:
@@ -44,5 +44,5 @@ def delete_patient_slot(service, username):
     
 if __name__ == '__main__':
     service = calender_api.create_auth_service()
-    username = argv[1]
+    username = get_events.get_username()
     delete_patient_slot(service, username)

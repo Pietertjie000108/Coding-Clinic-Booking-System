@@ -14,12 +14,12 @@ from sys import argv
 def delete_clinician_slot(service, username):
     events = get_events.simple_get_events_without_printing_anything(username, service)
     while True:
-        user_input = argv[2]
+        user_input = argv[1]
         for event in events:
             event_id = event['id']
             if event_id == user_input:
                 events1, count1 = actual_delete_events(user_input, username, service)
-                os.remove("functions/clinicians/clinician_files/" + event_id + ".json")
+                # os.remove("functions/clinicians/clinician_files/" + event_id + ".json")
                 if count1 == 0:
                     print("You currently don't have any slots created.")
                 return
@@ -43,5 +43,5 @@ def actual_delete_events(user_input, username, service):
 
 if __name__ == '__main__':
     service = calender_api.create_auth_service()
-    username = argv[1]
+    username = get_events.get_username()
     delete_clinician_slot(service, username)
