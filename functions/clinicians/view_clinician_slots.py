@@ -6,25 +6,23 @@ sys.path.insert(0, parentdir)
 
 import calender_api
 import get_events
+import auth_interface
 import date_format as df
 import json
 import os
 from pprint import pprint
 from sys import argv
 
-if __name__ == '__main__':
+
+def main_function():
+    if auth_interface.check_if_credentials_have_expired():
+        return
     service = calender_api.create_auth_service()
     username = get_events.get_username()
     events, count = get_events.get_events_for_next_7_days_to_delete(username, service)
     if count == 0:
         print("You currently don't have any slots created.")
 
-    # page_token = None
-    # while True:
-    #     calendar_list = service.calendarList().list(pageToken=page_token).execute()
-    #     for calendar_list_entry in calendar_list['items']:
-    #         pprint(calendar_list_entry)
-    #         break
-    #         page_token = calendar_list.get('nextPageToken')
-    #     if not page_token:
-    #         break
+
+if __name__ == '__main__':
+    main_function()

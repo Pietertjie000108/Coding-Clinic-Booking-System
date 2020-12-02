@@ -7,6 +7,7 @@ sys.path.insert(0, parentdir)
 import calender_api
 import get_events
 import date_format as df
+import auth_interface
 import json
 import os
 from sys import argv
@@ -40,7 +41,13 @@ def actual_delete_events(user_input, username, service):
     return events, count
 
 
-if __name__ == '__main__':
+def main_function():
     service = calender_api.create_auth_service()
+    if auth_interface.check_if_credentials_have_expired():
+        return
     username = get_events.get_username()
     delete_clinician_slot(service, username)
+
+
+if __name__ == '__main__':
+    main_function()
