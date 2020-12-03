@@ -22,6 +22,8 @@ def check_if_slots_overlap(start2, end, service, username):
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
     
+    # overlaps = check_if_slots_overlap_on_personal_calender(start2, end, service, username)
+    # if
     for event in events:
         start1 = event['start'].get('dateTime', event['start'].get('date'))
         st = re.split("[-T:+]",start2)
