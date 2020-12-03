@@ -9,6 +9,9 @@ import re
 
 
 def main():
+    '''
+    Registration as new user
+    '''
     with open("authenticator/users.txt", "a+") as file_ob:
         file_ob.seek(0)
         data = file_ob.read(100)
@@ -74,3 +77,7 @@ def user_and_pass():
     user = new_username()
     passwd = password()
     return user,passwd
+
+
+if __name__ == "__main__":
+    main()

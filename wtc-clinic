@@ -1,11 +1,23 @@
 CDIR=`readlink -f .`
 
+
 case "$1" in
+
+
+register)
+    python3 $CDIR/authenticator/new_user.py
+    ;;
+
+
+login)
+    python3 $CDIR/authenticator/pass_auth.py
+    ;;
+
 
 patient)
     case "$2" in 
     view)
-        python3 $CDIR/functions/patients/view_patient_slots.py $3
+        python3 $CDIR/functions/patients/view_patient_slots.py $3        
         ;;
 
     slots)
@@ -21,6 +33,7 @@ patient)
         ;;
     esac
     ;;
+
 
 clinician)
     case "$2" in

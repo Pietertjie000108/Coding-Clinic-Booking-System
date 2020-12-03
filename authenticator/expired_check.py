@@ -3,6 +3,9 @@ import csv
 
 
 def is_program_expired():
+    '''
+    Check expiration
+    '''
     # Query date of first lauch in given file
     if os.path.exists("username_file"):
         with open("username_file", 'r') as file:
@@ -20,3 +23,6 @@ def is_program_expired():
                     return True
                 else :
                     return False
+
+
+is_program_expired()

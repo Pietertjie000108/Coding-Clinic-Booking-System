@@ -9,6 +9,9 @@ sys.path.insert(0, parentdir)
 
 
 def main():
+    '''
+    Login after expiration
+    '''
     with open("authenticator/users.txt","r") as file:
         file_reader = csv.reader(file)
         user_find(file_reader)
