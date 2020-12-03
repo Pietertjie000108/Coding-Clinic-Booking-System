@@ -1,6 +1,13 @@
 CDIR=`readlink -f .`
 
+
 case "$1" in
+login)
+    python3 $CDIR/authenticator/pass_auth.py
+    ;;
+register)
+    python3 $CDIR/authenticator/new_user.py
+    ;;
 
 patient)
     case "$2" in 
@@ -9,20 +16,28 @@ patient)
         ;;
 
     slots)
-        python3 $CDIR/functions/patients/view_slots_for_patient_slots.py $3
+        python3 $CDIR/functions/patients/view_slots_for_patient_signup.py $3
         ;;
 
     signup)
-        python3 $CDIRD/functions/patients/signup_to_patient_slot.py $3 $4 $5
+        python3 $CDIR/functions/patients/signup_to_patient_slot.py $3 $4 $5
         ;;
 
     delete)
-        python3 $CDIR/functions/patients/delete_patient_slots.py $3 $4
+        python3 $CDIR/functions/patients/delete_patient_slot.py $3 $4
+        ;;
+    *) 
+        echo "patient menu:
+        wtc-clinic patient view             View slots you've signed up to
+        wtc-clinic patient slots            View slots you can sign up to
+        wtc-clinic patient signup           Sign up to specific slot
+        wtc-clinic patient delete           Un-register yourself from a slot you've signed up to"
         ;;
     esac
     ;;
 
 clinician)
+    
     case "$2" in
     view)
         python3 $CDIR/functions/clinicians/view_clinician_slots.py $3
@@ -35,7 +50,24 @@ clinician)
     delete)
         python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3 $4
         ;;
+    *) 
+        echo "clinician menu:
+        wtc-clinic clinician view           View clinician slots you created          
+        wtc-clinic clinician create         Create a new clinician slot
+        wtc-clinic clinician delete         Remove a clinician slot you made"        
+        ;;
     esac
     ;;
+
+*)
+    echo "'wtc-clinic register'             For first time users 
+'wtc-clinic login'                Login before each use. 
+
+Clinician functionality:
+        type: 'wtc-clinic clinician' into terminal
+        
+Patient functionality:
+        type: 'wtc-clinic patient' into terminal "
+;;
 esac
     
