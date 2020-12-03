@@ -2,6 +2,12 @@ CDIR=`readlink -f .`
 
 
 case "$1" in
+login)
+    python3 $CDIR/authenticator/pass_auth.py
+    ;;
+register)
+    python3 $CDIR/authenticator/new_user.py
+    ;;
 
 
 register)
@@ -36,6 +42,7 @@ patient)
 
 
 clinician)
+    
     case "$2" in
     view)
         python3 $CDIR/functions/clinicians/view_clinician_slots.py
@@ -48,7 +55,24 @@ clinician)
     delete)
         python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3
         ;;
+    *) 
+        echo "clinician menu:
+        wtc-clinic clinician view           View clinician slots you created          
+        wtc-clinic clinician create         Create a new clinician slot
+        wtc-clinic clinician delete         Remove a clinician slot you made"        
+        ;;
     esac
     ;;
+
+*)
+    echo "'wtc-clinic register'             For first time users 
+'wtc-clinic login'                Login before each use. 
+
+Clinician functionality:
+        type: 'wtc-clinic clinician' into terminal
+        
+Patient functionality:
+        type: 'wtc-clinic patient' into terminal "
+;;
 esac
     

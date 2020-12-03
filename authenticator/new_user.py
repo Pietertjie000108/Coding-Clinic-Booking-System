@@ -6,12 +6,14 @@ sys.path.insert(0, parentdir)
 
 import encrypter
 import re
+# import replacer
+import getpass
 
 
 def main():
-    '''
-    Registration as new user
-    '''
+    """
+    New user regestration
+    """
     with open("authenticator/users.txt", "a+") as file_ob:
         file_ob.seek(0)
         data = file_ob.read(100)
@@ -43,13 +45,13 @@ def password():
     password1 = validate()
     password_check = ''
     while password1 != password_check:
-        password_check = input("Please re-enter password: ")
+        password_check = getpass.getpass("Please re-enter password: ")
     return password1
     
 
 def validate():
     while True:
-        password = input("Please enter a password longer than 8 characters: ")
+        password = getpass.getpass("Please enter a password longer than 8 characters: ")
         if len(password) < 8:
             print("Make sure your password is at lest 8 letters")
         elif re.search('[0-9]',password) is None:
@@ -77,7 +79,6 @@ def user_and_pass():
     user = new_username()
     passwd = password()
     return user,passwd
-
 
 if __name__ == "__main__":
     main()

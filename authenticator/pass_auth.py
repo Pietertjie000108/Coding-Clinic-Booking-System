@@ -2,6 +2,9 @@ import sys, os, inspect
 import csv
 import encrypter
 import user_file_gen as gen
+# import replacer
+import getpass
+
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -9,15 +12,20 @@ sys.path.insert(0, parentdir)
 
 
 def main():
-    '''
-    Login after expiration
-    '''
+    """
+    Main login system
+    """
     with open("authenticator/users.txt","r") as file:
         file_reader = csv.reader(file)
         user_find(file_reader)
         file.close()
 
 def user_find(file):
+    """
+    check through the users file for the username inputted.
+
+    file is the file we are using to store user data.
+    """
     username = input("Enter your username: ")
     for row in file:
         if row[0] == username.lower():
@@ -31,9 +39,14 @@ def user_find(file):
             #print("not found")
 
 def pass_check(user_found):
+    """
+    checking users input against saved data
+
+    user_found is the row the function is working with.
+    """
     password = ''
     while password != user_found[1]:
-        password = input("Enter your password: ")
+        password = getpass.getpass("Please enter your password: ")
         pass1 = encrypter.encrypt_password(password)
         if user_found[1] == pass1:
             return "password match"

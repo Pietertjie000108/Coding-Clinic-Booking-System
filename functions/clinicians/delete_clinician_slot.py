@@ -7,6 +7,7 @@ sys.path.insert(0, parentdir)
 import calender_api
 import get_events
 import date_format as df
+import auth_interface
 import json
 import os
 from sys import argv
@@ -14,12 +15,11 @@ from sys import argv
 def delete_clinician_slot(service, username):
     events = get_events.simple_get_events_without_printing_anything(username, service)
     while True:
-        user_input = argv[2]
+        user_input = argv[1]
         for event in events:
             event_id = event['id']
             if event_id == user_input:
                 events1, count1 = actual_delete_events(user_input, username, service)
-                os.remove("functions/clinicians/clinician_files/" + event_id + ".json")
                 if count1 == 0:
                     print("You currently don't have any slots created.")
                 return
@@ -41,7 +41,13 @@ def actual_delete_events(user_input, username, service):
     return events, count
 
 
-if __name__ == '__main__':
+def main_function():
     service = calender_api.create_auth_service()
-    username = argv[1]
+    if auth_interface.check_if_credentials_have_expired():
+        return
+    username = get_events.get_username()
     delete_clinician_slot(service, username)
+
+
+if __name__ == '__main__':
+    main_function()
