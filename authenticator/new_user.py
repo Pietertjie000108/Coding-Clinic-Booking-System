@@ -14,7 +14,7 @@ def main():
     """
     New user regestration
     """
-    with open("authenticator/users.txt", "a+") as file_ob:
+    with open("users.txt", "a+") as file_ob:
         file_ob.seek(0)
         data = file_ob.read(100)
         user = ''
@@ -31,7 +31,7 @@ def main():
 
 def new_username():
     username = input("Please enter your username: ")
-    with open("authenticator/users.txt", 'r') as usernames:
+    with open("users.txt", 'r') as usernames:
         if username in usernames.read():
             usernames.close()
             print("That user already exists.")

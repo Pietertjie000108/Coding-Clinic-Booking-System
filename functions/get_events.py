@@ -3,6 +3,7 @@ from rich.console import Console
 from rich import print
 from rich.table import Table, Column
 from pprint import pprint
+import json
 
 # global variable calender_id
 calendar_id = 'wethinkmock@gmail.com'
@@ -58,7 +59,7 @@ def get_events_for_next_7_days_to_delete(username, service):
         events ([list]): list of dictionaries, with each dictionary being a google cal event.
         count ([int]): either 1 or 0, returns 1 if there where events returned and 0 if there arent any events.
     """    
-
+    event_list = {"events" : []}
     print("These are your current slots: \n")
     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId=calendar_id, timeMin=time[0],
@@ -75,6 +76,10 @@ def get_events_for_next_7_days_to_delete(username, service):
         if event['summary'] == f'{username} - Code Clinic':
             count = 1
             print_events(start, event, description)
+            event_list['events'].append({event['id'] : event})
+    with open('functions/data_files/events.json', 'w+') as outfile:
+        json.dump(event_list, outfile, sort_keys=True, indent=4)
+    outfile.close()
     return events, count
 
 
