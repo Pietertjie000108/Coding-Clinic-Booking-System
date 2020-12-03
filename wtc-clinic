@@ -9,46 +9,51 @@ register)
     python3 $CDIR/authenticator/new_user.py
     ;;
 
+
+register)
+    python3 $CDIR/authenticator/new_user.py
+    ;;
+
+
+login)
+    python3 $CDIR/authenticator/pass_auth.py
+    ;;
+
+
 patient)
     case "$2" in 
     view)
-        python3 $CDIR/functions/patients/view_patient_slots.py $3
+        python3 $CDIR/functions/patients/view_patient_slots.py        
         ;;
 
     slots)
-        python3 $CDIR/functions/patients/view_slots_for_patient_signup.py $3
+        python3 $CDIR/functions/patients/view_slots_for_patient_slots.py
         ;;
 
     signup)
-        python3 $CDIR/functions/patients/signup_to_patient_slot.py $3 $4 $5
+        python3 $CDIRD/functions/patients/signup_to_patient_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/patients/delete_patient_slot.py $3 $4
-        ;;
-    *) 
-        echo "patient menu:
-        wtc-clinic patient view             View slots you've signed up to
-        wtc-clinic patient slots            View slots you can sign up to
-        wtc-clinic patient signup           Sign up to specific slot
-        wtc-clinic patient delete           Un-register yourself from a slot you've signed up to"
+        python3 $CDIR/functions/patients/delete_patient_slots.py $3
         ;;
     esac
     ;;
+
 
 clinician)
     
     case "$2" in
     view)
-        python3 $CDIR/functions/clinicians/view_clinician_slots.py $3
+        python3 $CDIR/functions/clinicians/view_clinician_slots.py
         ;;
 
     create)
-        python3 $CDIR/functions/clinicians/create_clinician_slot.py $3 $4 $5 $6
+        python3 $CDIR/functions/clinicians/create_clinician_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3 $4
+        python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3
         ;;
     *) 
         echo "clinician menu:
