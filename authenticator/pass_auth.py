@@ -2,7 +2,8 @@ import sys, os, inspect
 import csv
 import encrypter
 import user_file_gen as gen
-import replacer
+# import replacer
+import getpass
 
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -14,7 +15,7 @@ def main():
     """
     Main login system
     """
-    with open("users.txt","r") as file:
+    with open("authenticator/users.txt","r") as file:
         file_reader = csv.reader(file)
         user_find(file_reader)
         file.close()
@@ -45,7 +46,7 @@ def pass_check(user_found):
     """
     password = ''
     while password != user_found[1]:
-        password = replacer.getpass("Please enter your password: ")
+        password = getpass.getpass("Please enter your password: ")
         pass1 = encrypter.encrypt_password(password)
         if user_found[1] == pass1:
             return "password match"
