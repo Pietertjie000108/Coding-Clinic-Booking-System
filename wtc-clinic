@@ -17,19 +17,19 @@ login)
 patient)
     case "$2" in 
     view)
-        python3 $CDIR/functions/patients/view_patient_slots.py $3        
+        python3 $CDIR/functions/patients/view_patient_slots.py        
         ;;
 
     slots)
-        python3 $CDIR/functions/patients/view_slots_for_patient_slots.py $3
+        python3 $CDIR/functions/patients/view_slots_for_patient_slots.py
         ;;
 
     signup)
-        python3 $CDIRD/functions/patients/signup_to_patient_slot.py $3 $4 $5
+        python3 $CDIRD/functions/patients/signup_to_patient_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/patients/delete_patient_slots.py $3 $4
+        python3 $CDIR/functions/patients/delete_patient_slots.py $3
         ;;
     esac
     ;;
@@ -38,15 +38,15 @@ patient)
 clinician)
     case "$2" in
     view)
-        python3 $CDIR/functions/clinicians/view_clinician_slots.py $3
+        python3 $CDIR/functions/clinicians/view_clinician_slots.py
         ;;
 
     create)
-        python3 $CDIR/functions/clinicians/create_clinician_slot.py $3 $4 $5 $6
+        python3 $CDIR/functions/clinicians/create_clinician_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3 $4
+        python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3
         ;;
     esac
     ;;
