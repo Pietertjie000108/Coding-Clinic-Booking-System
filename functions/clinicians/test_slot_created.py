@@ -56,7 +56,7 @@ class MyTestCase(unittest.TestCase):
         #testargs = ["prog", "-f", "/Users/User/Documents/Python/coding-clinic/functions/clinicians/create_clinician_slot.py"]
         testargs= ["2020-12-09", "11:00", "/Users/User/Documents/Python/coding-clinic/functions/clinicians/create_clinician_slot.py"]
         with patch.object(sys, 'argv', testargs):
-            #setup = get_setup_file()
+            
             with test_base.captured_output() as (out, err):
                 create_clinician_slot.add_to_calender(service, username)
             output = out.getvalue().strip()
