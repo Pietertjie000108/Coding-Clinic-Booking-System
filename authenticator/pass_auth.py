@@ -26,9 +26,10 @@ def user_find(file):
 
     file is the file we are using to store user data.
     """
-    username = input("Enter your username: ")
+    username1 = input("Enter your username: ")
+    username = username1.lower()
     for row in file:
-        if row[0] == username.lower():
+        if row[0] == username:
             print("username found", username)
             user_found = [row[0],row[1]]
             pass_check(user_found)
