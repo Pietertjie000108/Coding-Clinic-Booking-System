@@ -8,8 +8,8 @@ sys.path.insert(0, parentdir)
 
 
 import unittest
-
-#from test_base import captured_io
+import test_base
+from unittest.mock import patch
 import calender_api
 import date_format as df
 import datetime
@@ -42,13 +42,21 @@ class MyTestCase(unittest.TestCase):
         a = create_clinician_slot.check_if_slots_overlap(start2, end, service, username)
         self.assertEqual(a,False)
         
-    """
+    
     def test_add_to_calendar(self):
+        global service
+        username="nmeintje"
         overlaps = False
-        with captured_io(StringIO("2020-12-09 11:00")) as (out, err):
+        
+        #testargs = ["prog", "-f", "/Users/User/Documents/Python/coding-clinic/functions/clinicians/create_clinician_slot.py"]
+        testargs= ["2020-12-09", "11:00"]
+        with patch.object(sys, 'argv', testargs):
+            #setup = get_setup_file()
+            with test_base.captured_output() as (out, err):
+                create_clinician_slot.add_to_calender(service, username)
             output = out.getvalue().strip()
-        self.assertEqual(output,)
-    """
+        self.assertEqual(output,"Your slot has been created")
+    
 
 if __name__=="__main__":
     unittest.main()
