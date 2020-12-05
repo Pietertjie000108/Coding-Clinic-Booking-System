@@ -10,6 +10,7 @@ sys.path.insert(0, parentdir)
 import unittest
 import test_base
 from unittest.mock import patch
+import argparse
 import calender_api
 import date_format as df
 import datetime
@@ -27,6 +28,8 @@ end = df.convert_to_RFC_datetime(d_and_t[0], d_and_t[1], d_and_t[2], d_and_t[4][
 
 # if auth_interface.check_if_credentials_have_expired():
 #         return
+
+
 class MyTestCase(unittest.TestCase):
 
     def test_slots_overlap(self):
@@ -53,9 +56,8 @@ class MyTestCase(unittest.TestCase):
         username="nmeintje"
         overlaps = False
         
-        #testargs = ["prog", "-f", "/Users/User/Documents/Python/coding-clinic/functions/clinicians/create_clinician_slot.py"]
-        testargs= ["2020-12-09", "11:00", "/Users/User/Documents/Python/coding-clinic/functions/clinicians/create_clinician_slot.py"]
-        with patch.object(sys, 'argv', testargs):
+    
+        with unittest.mock.patch('sys.argv', ['create_clinician_slot.py', '2020-12-09', '11:00']):    
             
             with test_base.captured_output() as (out, err):
                 create_clinician_slot.add_to_calender(service, username)
