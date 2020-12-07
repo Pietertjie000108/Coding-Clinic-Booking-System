@@ -8,5 +8,7 @@ modules used:
     #pip3 install whirlpool
     getch
     #pip3 install getch
+    stdiomask
+    #pip3 install stdiomask
 
 Creating a new user, encrypting their password, doing a login auth.
