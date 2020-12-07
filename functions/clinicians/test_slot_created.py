@@ -45,25 +45,26 @@ class MyTestCase(unittest.TestCase):
         a = create_clinician_slot.check_if_slots_overlap(start2, end, service, username)
         self.assertEqual(a,False)
         
-    
+    """
     def test_add_to_calendar(self):
-        """
+        
         In this unittest we need to mock the value of "overlaps" 
         and set it to False and then True, as well as date and time commandline arguments.
         Namely, 2020-12-09, 11:00. To do this we use patch from the mock library
-        """
-        global service
-        username="nmeintje"
-        overlaps = False
         
+      
+    """
     
-        with unittest.mock.patch('sys.argv', ['create_clinician_slot.py', '2020-12-09', '11:00']):    
-            
+    @patch('create_clinician_slot.check_if_slots_overlap', return_value=False)
+    def test_add_to_calendar(self):
+        global service
+        username = "nmeintje"  
+        with unittest.mock.patch('sys.argv', ['create_clinician_slot.py', '2020-12-09', '11:00']): 
             with test_base.captured_output() as (out, err):
                 create_clinician_slot.add_to_calender(service, username)
             output = out.getvalue().strip()
-        self.assertEqual(output,"Your slot has been created...")
-    
+            self.assertEqual(output,"Your slot has been created...")
+
 
 if __name__=="__main__":
     unittest.main()
