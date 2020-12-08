@@ -6,11 +6,11 @@ CDIR=`readlink -f .`
 # pip3 install rich
 
 
-alias wtc-clinic="$CDIR/wtc-clinic" >> ~/.bashrc
-alias wtc-clinic="$CDIR/wtc-clinic" >> ~/.zshr
+alias wtc-clinic="$PWD/wtc-clinic" >> ~/.bashrc
+alias wtc-clinic="$PWD/wtc-clinic" >> ~/.zshr
 
 
 chmod +x wtc-clinic
 
 
-echo $CDIR
+echo $PWD
