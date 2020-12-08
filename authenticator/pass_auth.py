@@ -18,8 +18,10 @@ def main():
     """
     with open("authenticator/users.txt","r") as file:
         file_reader = csv.reader(file)
-        user_find(file_reader)
-        file.close()
+        if user_find(file_reader) == True:
+            file.close()
+        else :
+            print("Please make sure you are registered.")
 
 def user_find(file):
     """
@@ -35,10 +37,9 @@ def user_find(file):
             user_found = [row[0],row[1]]
             pass_check(user_found)
             gen.create_username_file(username)
-            break
+            return True
         else:
             continue
-            #print("not found")
 
 def pass_check(user_found):
     """
