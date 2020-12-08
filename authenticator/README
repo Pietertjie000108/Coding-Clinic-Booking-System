@@ -6,8 +6,6 @@ modules used:
     re
     whirlpool
     #pip3 install whirlpool
-    getch
-    #pip3 install getch
     stdiomask
     #pip3 install stdiomask
 
