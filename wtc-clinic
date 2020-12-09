@@ -2,6 +2,7 @@ case "$1" in
 login)
     python3 $PWD/authenticator/pass_auth.py
     ;;
+
 register)
     python3 $PWD/authenticator/new_user.py
     ;;
@@ -28,10 +29,10 @@ patient)
 
     *)
         echo "patient menu:
-        wtc-clinic patient view           View slots you have signed up for.
-        wtc-clinic patient slots          View slots you can sign up for.          
-        wtc-clinic patient signup         Signup to a slot
-        wtc-clinic patient delete         Remove yourself from a clinic you signed up for" 
+        wtc-clinic patient view                         View slots you have signed up for.
+        wtc-clinic patient slots                        View slots you can sign up for.          
+        wtc-clinic patient signup <topic> <id>          Signup to a slot
+        wtc-clinic patient delete <id>                  Remove yourself from a clinic you signed up for" 
     esac
     ;;
 
@@ -52,9 +53,9 @@ clinician)
         ;;
     *) 
         echo "clinician menu:
-        wtc-clinic clinician view           View clinician slots you created          
-        wtc-clinic clinician create         Create a new clinician slot
-        wtc-clinic clinician delete         Remove a clinician slot you made"        
+        wtc-clinic clinician view                               View clinician slots you created          
+        wtc-clinic clinician create <YYYY/MM/DD> <time>         Create a new clinician slot (24:00 format for time)
+        wtc-clinic clinician delete <id>                        Remove a clinician slot you made"        
         ;;
     esac
     ;;
