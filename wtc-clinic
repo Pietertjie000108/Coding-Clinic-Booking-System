@@ -11,7 +11,7 @@ register)
 patient)
     case "$2" in 
     view)
-        python3 $PWD/functions/patients/view_patient_s.py        
+        python3 $PWD/functions/patients/view_patient_slots.py        
         ;;
 
     slots)
@@ -23,7 +23,7 @@ patient)
         ;;
 
     delete)
-        python3 $PWD/functions/patients/delete_patient_slots.py $3
+        python3 $PWD/functions/patients/delete_patient_slot.py $3
         ;;
 
     *)
