@@ -3,23 +3,17 @@
 Type: : "source bash.sh" into your terminal from the project directory.
 Type: 'wtc-clinic' into your terminal after the bash script was run. 
 
-# bin: all the shell scripts
-# src: all python scripts etc
+# Using the program:
+'wtc-clinic register'       To register on the system
+'wtc-clinic login'          To login and use the system
 
+'wtc-clinic patient'                        For patient functions
+'wtc-clinic patient view'                                   View slots you have signed up for.
+'wtc-clinic patient slots'                                  View slots you can sign up for.          
+'wtc-clinic patient signup <topic> <id>'                    Signup to a slot
+'wtc-clinic patient delete <id>'                            Remove yourself from a clinic you signed up for
 
-# Run the program:
-
-Run the following code to install the rich module:
-    pip3 install rich
-The user is is able to use the program by running any of the modules in either the clinicians 
-or the patients module. But when running any of those modules the user will need to provide valid args.
-Here is how you run each of the modules.
-Clinicians:
-    python3 create_clinician_slot.py [date (yyyy/mm/dd)] [time e.g 14:00] - creates a slot as a clinician.
-    python3 delete_clinician_slot.py [slot id] - deletes slot youve created as a clinician.
-    python3 view_clinician_slots.py - views all the slots youve created as a clinician.
-Patients:
-    python3 view_patient_slots.py - views all the slots youve signed up to as a patient.
-    python3 view_slots_for_patient_slots.py - views all the slots you can sign up to as a patient.
-    python3 delete_patient_slots.py [slot id] - removes you as a patient from the slot youve signed up to.
-    python3 signup_to_patient_slot.py [description, what you need help with] [slot id] - signs you up as a patient to a slot of your choice.
+'wtc-clinic clinician'                      For clinician functions
+'wtc-clinic clinician view'                                View clinician slots you created          
+'wtc-clinic clinician create <YYYY/MM/DD> <time>'          Create a new clinician slot
+'wtc-clinic clinician delete <id>'                         Remove a clinician slot you made%

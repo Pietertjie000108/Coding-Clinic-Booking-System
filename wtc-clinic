@@ -7,7 +7,9 @@ register)
     python3 $PWD/authenticator/new_user.py
     ;;
 
-
+help)
+    cat README.md
+    ;;
 
 patient)
     case "$2" in 
