@@ -12,7 +12,8 @@ import stdiomask
 
 def main():
     """
-    New user regestration
+    New user regestration:
+    writing the username and encrypted password to a file for later usage.
     """
     with open("authenticator/users.txt", "a+") as file_ob:
         file_ob.seek(0)
@@ -30,6 +31,9 @@ def main():
                 
 
 def new_username():
+    """
+    getting input from the user about there username and returning that value
+    """
     username = input("Please enter your username: ")
     with open("authenticator/users.txt", 'r') as usernames:
         if username in usernames.read():
@@ -42,6 +46,9 @@ def new_username():
 
 
 def password():
+    """
+    getting input from the user about a password and returning that value
+    """
     password1 = validate()
     password_check = ''
     while password1 != password_check:
@@ -50,6 +57,9 @@ def password():
     
 
 def validate():
+    """
+    function used to create a userpassword with set requirements.
+    """
     while True:
         password = stdiomask.getpass(prompt="Please enter a password longer than 8 characters: ", mask='*')
         if len(password) < 8:
@@ -64,6 +74,9 @@ def validate():
 
 
 def robot_test():
+    """
+    just a fun little test
+    """
     valid_answers = ['1', '2']
     answer = input("Are you a robot? \n 1) No. \n 2) Yes. \n")
     while answer in valid_answers:

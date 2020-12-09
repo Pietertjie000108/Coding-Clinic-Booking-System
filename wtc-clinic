@@ -24,7 +24,7 @@ patient)
         ;;
 
     slots)
-        python3 $PWD/functions/patients/view_slots_for_patient_slots.py
+        python3 $PWD/functions/patients/view_slots_for_patient_signup.py
         ;;
 
     signup)
