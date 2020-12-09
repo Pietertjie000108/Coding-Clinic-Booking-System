@@ -7,20 +7,11 @@ register)
     ;;
 
 
-register)
-    python3 $PWD/authenticator/new_user.py
-    ;;
-
-
-login)
-    python3 $PWD/authenticator/pass_auth.py
-    ;;
-
 
 patient)
     case "$2" in 
     view)
-        python3 $PWD/functions/patients/view_patient_slots.py        
+        python3 $PWD/functions/patients/view_patient_s.py        
         ;;
 
     slots)
@@ -34,6 +25,13 @@ patient)
     delete)
         python3 $PWD/functions/patients/delete_patient_slots.py $3
         ;;
+
+    *)
+        echo "patient menu:
+        wtc-clinic patient view           View slots you have signed up for.
+        wtc-clinic patient slots          View slots you can sign up for.          
+        wtc-clinic patient signup         Signup to a slot
+        wtc-clinic patient delete         Remove yourself from a clinic you signed up for" 
     esac
     ;;
 

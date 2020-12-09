@@ -1,4 +1,7 @@
 # Coding-Clinic-Booking-System
+# Getting started
+Type: : "source bash.sh" into your terminal from the project directory.
+Type: 'wtc-clinic' into your terminal after the bash script was run. 
 
 # bin: all the shell scripts
 # src: all python scripts etc
