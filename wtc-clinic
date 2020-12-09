@@ -1,41 +1,73 @@
-CDIR=`readlink -f .`
-
 case "$1" in
+login)
+    python3 $PWD/authenticator/pass_auth.py
+    ;;
+register)
+    python3 $PWD/authenticator/new_user.py
+    ;;
+
+
 
 patient)
     case "$2" in 
     view)
-        python3 $CDIR/functions/patients/view_patient_slots.py $3
+        python3 $PWD/functions/patients/view_patient_slots.py        
         ;;
 
     slots)
-        python3 $CDIR/functions/patients/view_slots_for_patient_signup.py $3
+        python3 $PWD/functions/patients/view_slots_for_patient_signup.py
         ;;
 
     signup)
-        python3 $CDIR/functions/patients/signup_to_patient_slot.py $3 $4 $5
+        python3 $PWD/functions/patients/signup_to_patient_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/patients/delete_patient_slot.py $3 $4
+        python3 $PWD/functions/patients/delete_patient_slot.py $3
         ;;
+
+    *)
+        echo "patient menu:
+        wtc-clinic patient view           View slots you have signed up for.
+        wtc-clinic patient slots          View slots you can sign up for.          
+        wtc-clinic patient signup         Signup to a slot
+        wtc-clinic patient delete         Remove yourself from a clinic you signed up for" 
     esac
     ;;
 
+
 clinician)
+    
     case "$2" in
     view)
-        python3 $CDIR/functions/clinicians/view_clinician_slots.py $3
+        python3 $PWD/functions/clinicians/view_clinician_slots.py
         ;;
 
     create)
-        python3 $CDIR/functions/clinicians/create_clinician_slot.py $3 $4 $5 $6
+        python3 $PWD/functions/clinicians/create_clinician_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3 $4
+        python3 $PWD/functions/clinicians/delete_clinician_slot.py $3
+        ;;
+    *) 
+        echo "clinician menu:
+        wtc-clinic clinician view           View clinician slots you created          
+        wtc-clinic clinician create         Create a new clinician slot
+        wtc-clinic clinician delete         Remove a clinician slot you made"        
         ;;
     esac
     ;;
+
+*)
+    echo "'wtc-clinic register'             For first time users 
+'wtc-clinic login'                Login before each use. 
+
+Clinician functionality:
+        type: 'wtc-clinic clinician' into terminal
+        
+Patient functionality:
+        type: 'wtc-clinic patient' into terminal "
+;;
 esac
     

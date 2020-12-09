@@ -4,14 +4,16 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-import encrypter
+import authenticator.encrypter as encrypter
 import re
-import replacer
+# import replacer
+import stdiomask
 
 
 def main():
     """
-    New user regestration
+    New user regestration:
+    writing the username and encrypted password to a file for later usage.
     """
     with open("authenticator/users.txt", "a+") as file_ob:
         file_ob.seek(0)
@@ -29,28 +31,37 @@ def main():
                 
 
 def new_username():
+    """
+    getting input from the user about there username and returning that value
+    """
     username = input("Please enter your username: ")
     with open("authenticator/users.txt", 'r') as usernames:
         if username in usernames.read():
             usernames.close()
             print("That user already exists.")
-            return new_username()
+            sys.exit()
         else:
             usernames.close()
             return username
 
 
 def password():
+    """
+    getting input from the user about a password and returning that value
+    """
     password1 = validate()
     password_check = ''
     while password1 != password_check:
-        password_check = replacer.getpass("Please re-enter password: ")
+        password_check = stdiomask.getpass(prompt="Please re-enter password: ", mask='*')
     return password1
     
 
 def validate():
+    """
+    function used to create a userpassword with set requirements.
+    """
     while True:
-        password = replacer.getpass("Please enter a password longer than 8 characters: ")
+        password = stdiomask.getpass(prompt="Please enter a password longer than 8 characters: ", mask='*')
         if len(password) < 8:
             print("Make sure your password is at lest 8 letters")
         elif re.search('[0-9]',password) is None:
@@ -63,6 +74,9 @@ def validate():
 
 
 def robot_test():
+    """
+    just a fun little test
+    """
     valid_answers = ['1', '2']
     answer = input("Are you a robot? \n 1) No. \n 2) Yes. \n")
     while answer in valid_answers:
