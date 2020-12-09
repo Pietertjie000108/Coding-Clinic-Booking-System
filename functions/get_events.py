@@ -3,6 +3,7 @@ from rich.console import Console
 from rich import print
 from rich.table import Table, Column
 from pprint import pprint
+import json
 
 # global variable calender_id
 calendar_id = 'wethinkmock@gmail.com'
@@ -58,8 +59,8 @@ def get_events_for_next_7_days_to_delete(username, service):
         events ([list]): list of dictionaries, with each dictionary being a google cal event.
         count ([int]): either 1 or 0, returns 1 if there where events returned and 0 if there arent any events.
     """    
-
-    print("These are your current slots: \n")
+    event_list = {"events" : []}
+    print("\nThese are your current slots: \n")
     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId=calendar_id, timeMin=time[0],
                                         singleEvents=True, timeMax=time[1],
@@ -75,6 +76,10 @@ def get_events_for_next_7_days_to_delete(username, service):
         if event['summary'] == f'{username} - Code Clinic':
             count = 1
             print_events(start, event, description)
+            event_list['events'].append({event['id'] : event})
+    with open('functions/data_files/events.json', 'w+') as outfile:
+        json.dump(event_list, outfile, sort_keys=True, indent=4)
+    outfile.close()
     return events, count
 
 
@@ -98,7 +103,7 @@ def get_all_code_clinic_slots_to_signup(service, username):
         count ([int]): either 1 or 0, returns 1 if there where events returned and 0 if there arent any events.
     """  
 
-    print("These are all the available slots you can choose from.\n")
+    print("\nThese are all the available slots you can choose from.\n")
     events = get_events_from_service(service)
     count = 0
     for event in events:
@@ -125,8 +130,6 @@ def get_all_code_clinic_slots_to_signup_without_printing_anything(service, usern
     events = get_events_from_service(service)
     count = 0
     for event in events:
-        # start = df.format_time_to_make_readable(event)
-        # description = event['description']
         items_list =  event['attendees']
         if len(items_list) == 1 and username not in event['summary']:
             count = 1
@@ -150,42 +153,6 @@ def get_events_from_service(service):
     if not events:
         print('No upcoming events found.')
     return events
-
-
-# def get_patient_events_for_next_7_days(username, service):
-#     """
-#     [Gets all slots student has signed up to as a patient.]
-#     Args:
-#         username ([string]): [student username]
-#         service ([object]): [the api object that allows us to connect to google calenders]
-#     Return:
-#         events ([list]): list of dictionaries, with each dictionary being a google cal event.
-#         count ([int]): either 1 or 0, returns 1 if there where events returned and 0 if there arent any events.
-#     """
-
-#     print("These are the clinics you've signed up for: \n")
-#     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
-#     events_result = service.events().list(calendarId=calendar_id, timeMin=time[0],
-#                                         singleEvents=True, timeMax=time[1],
-#                                         orderBy='startTime').execute()
-#     events = events_result.get('items', [])
-#     count = 0
-#     for event in events:
-#         start = df.format_time_to_make_readable(event)
-#         description = event['description']
-#         items_list =  event['attendees']
-#         if len(items_list) == 2:
-#             items_dict = items_list[0]
-#             items_dict2 = items_list[1]
-#         else:    
-#             items_dict = items_list[0]
-#             items_dict2 = {'displayName': 'placeholder'}
-        
-#         if (items_dict['displayName'] == username or items_dict2['displayName'] == username) and username not in event['summary']:
-#             count = 1
-#             print_events(start, event, description)
-#     if count == 0:
-#         print("Seems like you haven't signed up for any code clinics yet.\n")
 
 
 def get_all_code_clinic_slots_to_delete(service, username):
@@ -235,8 +202,6 @@ def get_all_code_clinic_slots_to_delete_without_printing(service, username):
     events = get_events_from_service(service)
     count = 0
     for event in events:
-        # start = df.format_time_to_make_readable(event)
-        # description = event['description']
         items_list =  event['attendees']
         if len(items_list) == 2:
             items_dict = items_list[0]
