@@ -18,7 +18,7 @@ def main_function():
     username = get_events.get_username()
     events, count = get_events.get_all_code_clinic_slots_to_signup(service, username)
     if count == 0:
-        print("There are currently no available slots for Code Clinics. Check again later.")
+        print("\nThere are currently no available slots for Code Clinics. Check again later.")
 
 
 if __name__ == '__main__':

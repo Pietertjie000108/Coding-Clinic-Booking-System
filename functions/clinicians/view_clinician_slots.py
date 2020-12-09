@@ -21,7 +21,7 @@ def main_function():
     username = get_events.get_username()
     events, count = get_events.get_events_for_next_7_days_to_delete(username, service)
     if count == 0:
-        print("You currently don't have any slots created.")
+        print("\nYou currently don't have any slots created.\n")
 
 
 if __name__ == '__main__':

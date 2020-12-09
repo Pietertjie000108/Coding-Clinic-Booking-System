@@ -21,10 +21,10 @@ def delete_clinician_slot(service, username):
             if event_id == user_input:
                 events1, count1 = actual_delete_events(user_input, username, service)
                 if count1 == 0:
-                    print("You currently don't have any slots created.")
+                    print("\nYou currently don't have any slots created.\n")
                 return
             if events[-1] == event:
-                print("Please enter a valid ID.")
+                print("\nPlease enter a valid ID.\n")
                 return
 
 
@@ -42,6 +42,9 @@ def actual_delete_events(user_input, username, service):
 
 
 def main_function():
+    if len(argv) != 2:
+        print("\nPlease enter valid input. e.g: wtc-clinic clinician delete <ID>\n")
+        return
     service = calender_api.create_auth_service()
     if auth_interface.check_if_credentials_have_expired():
         return
