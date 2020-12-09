@@ -15,7 +15,7 @@ def main():
     """
     Main login system
     """
-    with open("users.txt","r") as file:
+    with open("authenticator/users.txt","r") as file:
         file_reader = csv.reader(file)
         user_find(file_reader)
         file.close()

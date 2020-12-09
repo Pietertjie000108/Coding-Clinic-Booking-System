@@ -1,30 +1,36 @@
 {
     "events": [
         {
-            "cbsabeonbug1s0f7ntur3gevss": {
+            "7e0sshv9m0gq4hr2jfap0mq2pc": {
                 "attendees": [
                     {
                         "displayName": "jkokot",
                         "email": "jkokot@student.wethinkcode.co.za",
                         "optional": true,
                         "responseStatus": "accepted"
+                    },
+                    {
+                        "displayName": "mnnyembe",
+                        "email": "mnnyembe@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
                     }
                 ],
-                "created": "2020-12-03T09:51:25.000Z",
+                "created": "2020-12-04T08:51:20.000Z",
                 "creator": {
                     "email": "wethinkmock@gmail.com",
                     "self": true
                 },
-                "description": "empty",
+                "description": "recursion",
                 "end": {
-                    "dateTime": "2020-12-05T20:30:00+02:00",
+                    "dateTime": "2020-12-11T14:30:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
-                "etag": "\"3213978170932000\"",
+                "etag": "\"3214828082776000\"",
                 "guestsCanModify": true,
-                "htmlLink": "https://www.google.com/calendar/event?eid=Y2JzYWJlb25idWcxczBmN250dXIzZ2V2c3Mgd2V0aGlua21vY2tAbQ",
-                "iCalUID": "cbsabeonbug1s0f7ntur3gevss@google.com",
-                "id": "cbsabeonbug1s0f7ntur3gevss",
+                "htmlLink": "https://www.google.com/calendar/event?eid=N2Uwc3NodjltMGdxNGhyMmpmYXAwbXEycGMgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "7e0sshv9m0gq4hr2jfap0mq2pc@google.com",
+                "id": "7e0sshv9m0gq4hr2jfap0mq2pc",
                 "kind": "calendar#event",
                 "location": "WTC",
                 "organizer": {
@@ -36,17 +42,17 @@
                 },
                 "sequence": 0,
                 "start": {
-                    "dateTime": "2020-12-05T20:00:00+02:00",
+                    "dateTime": "2020-12-11T14:00:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
                 "status": "confirmed",
                 "summary": "jkokot - Code Clinic",
-                "updated": "2020-12-03T09:51:25.466Z",
+                "updated": "2020-12-08T07:54:01.388Z",
                 "visibility": "public"
             }
         },
         {
-            "140rmnkjm2l37so67vvikm8mfs": {
+            "r9kvunok5or2sk1ujk5dm9j41k": {
                 "attendees": [
                     {
                         "displayName": "jkokot",
@@ -55,21 +61,20 @@
                         "responseStatus": "accepted"
                     }
                 ],
-                "created": "2020-12-03T09:52:04.000Z",
+                "created": "2020-12-08T09:14:19.000Z",
                 "creator": {
-                    "email": "wethinkmock@gmail.com",
-                    "self": true
+                    "email": "jkokot@student.wethinkcode.co.za"
                 },
                 "description": "empty",
                 "end": {
-                    "dateTime": "2020-12-05T21:30:00+02:00",
+                    "dateTime": "2020-12-14T17:30:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
-                "etag": "\"3213978249866000\"",
+                "etag": "\"3214837719004000\"",
                 "guestsCanModify": true,
-                "htmlLink": "https://www.google.com/calendar/event?eid=MTQwcm1ua2ptMmwzN3NvNjd2dmlrbThtZnMgd2V0aGlua21vY2tAbQ",
-                "iCalUID": "140rmnkjm2l37so67vvikm8mfs@google.com",
-                "id": "140rmnkjm2l37so67vvikm8mfs",
+                "htmlLink": "https://www.google.com/calendar/event?eid=cjlrdnVub2s1b3Iyc2sxdWprNWRtOWo0MWsgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "r9kvunok5or2sk1ujk5dm9j41k@google.com",
+                "id": "r9kvunok5or2sk1ujk5dm9j41k",
                 "kind": "calendar#event",
                 "location": "WTC",
                 "organizer": {
@@ -81,57 +86,12 @@
                 },
                 "sequence": 0,
                 "start": {
-                    "dateTime": "2020-12-05T21:00:00+02:00",
+                    "dateTime": "2020-12-14T17:00:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
                 "status": "confirmed",
                 "summary": "jkokot - Code Clinic",
-                "updated": "2020-12-03T09:52:04.933Z",
-                "visibility": "public"
-            }
-        },
-        {
-            "o2iqb2trkjat2slvoi00o7uqks": {
-                "attendees": [
-                    {
-                        "displayName": "jkokot",
-                        "email": "jkokot@student.wethinkcode.co.za",
-                        "optional": true,
-                        "responseStatus": "accepted"
-                    }
-                ],
-                "created": "2020-12-03T09:57:16.000Z",
-                "creator": {
-                    "email": "wethinkmock@gmail.com",
-                    "self": true
-                },
-                "description": "empty",
-                "end": {
-                    "dateTime": "2020-12-05T22:30:00+02:00",
-                    "timeZone": "Africa/Johannesburg"
-                },
-                "etag": "\"3213978873344000\"",
-                "guestsCanModify": true,
-                "htmlLink": "https://www.google.com/calendar/event?eid=bzJpcWIydHJramF0MnNsdm9pMDBvN3Vxa3Mgd2V0aGlua21vY2tAbQ",
-                "iCalUID": "o2iqb2trkjat2slvoi00o7uqks@google.com",
-                "id": "o2iqb2trkjat2slvoi00o7uqks",
-                "kind": "calendar#event",
-                "location": "WTC",
-                "organizer": {
-                    "email": "wethinkmock@gmail.com",
-                    "self": true
-                },
-                "reminders": {
-                    "useDefault": true
-                },
-                "sequence": 0,
-                "start": {
-                    "dateTime": "2020-12-05T22:00:00+02:00",
-                    "timeZone": "Africa/Johannesburg"
-                },
-                "status": "confirmed",
-                "summary": "jkokot - Code Clinic",
-                "updated": "2020-12-03T09:57:16.672Z",
+                "updated": "2020-12-08T09:14:19.502Z",
                 "visibility": "public"
             }
         }

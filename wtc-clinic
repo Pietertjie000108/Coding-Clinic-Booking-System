@@ -27,11 +27,11 @@ patient)
         ;;
 
     slots)
-        python3 $CDIR/functions/patients/view_slots_for_patient_slots.py
+        python3 $CDIR/functions/patients/view_slots_for_patient_signup.py
         ;;
 
     signup)
-        python3 $CDIRD/functions/patients/signup_to_patient_slot.py $3 $4
+        python3 $CDIR/functions/patients/signup_to_patient_slot.py $3 $4
         ;;
 
     delete)
