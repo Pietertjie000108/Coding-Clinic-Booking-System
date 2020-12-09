@@ -1,41 +1,38 @@
-CDIR=`readlink -f .`
-
-
 case "$1" in
 login)
-    python3 $CDIR/authenticator/pass_auth.py
+    python3 $PWD/authenticator/pass_auth.py
     ;;
 register)
-    python3 $CDIR/authenticator/new_user.py
+    python3 $PWD/authenticator/new_user.py
     ;;
 
 
 register)
-    python3 $CDIR/authenticator/new_user.py
+    python3 $PWD/authenticator/new_user.py
     ;;
 
 
 login)
-    python3 $CDIR/authenticator/pass_auth.py
+    python3 $PWD/authenticator/pass_auth.py
     ;;
 
 
 patient)
     case "$2" in 
     view)
-        python3 $CDIR/functions/patients/view_patient_slots.py        
+        python3 $PWD/functions/patients/view_patient_slots.py        
         ;;
 
     slots)
-        python3 $CDIR/functions/patients/view_slots_for_patient_signup.py
+        python3 $PWD/functions/patients/view_slots_for_patient_signup.py
         ;;
 
     signup)
-        python3 $CDIR/functions/patients/signup_to_patient_slot.py $3 $4
+        python3 $PWD/functions/patients/signup_to_patient_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/patients/delete_patient_slots.py $3
+        python3 $PWD/functions/patients/delete_patient_slots.py $3
         ;;
     esac
     ;;
@@ -45,15 +42,15 @@ clinician)
     
     case "$2" in
     view)
-        python3 $CDIR/functions/clinicians/view_clinician_slots.py
+        python3 $PWD/functions/clinicians/view_clinician_slots.py
         ;;
 
     create)
-        python3 $CDIR/functions/clinicians/create_clinician_slot.py $3 $4
+        python3 $PWD/functions/clinicians/create_clinician_slot.py $3 $4
         ;;
 
     delete)
-        python3 $CDIR/functions/clinicians/delete_clinician_slot.py $3
+        python3 $PWD/functions/clinicians/delete_clinician_slot.py $3
         ;;
     *) 
         echo "clinician menu:

@@ -7,7 +7,7 @@ sys.path.insert(0, parentdir)
 import encrypter
 import re
 # import replacer
-import getpass
+import stdiomask
 
 
 def main():
@@ -52,7 +52,7 @@ def password():
     password1 = validate()
     password_check = ''
     while password1 != password_check:
-        password_check = getpass.getpass("Please re-enter password: ")
+        password_check = stdiomask.getpass(prompt="Please re-enter password: ", mask='*')
     return password1
     
 
@@ -61,7 +61,7 @@ def validate():
     function used to create a userpassword with set requirements.
     """
     while True:
-        password = getpass.getpass("Please enter a password longer than 8 characters: ")
+        password = stdiomask.getpass(prompt="Please enter a password longer than 8 characters: ", mask='*')
         if len(password) < 8:
             print("Make sure your password is at lest 8 letters")
         elif re.search('[0-9]',password) is None:
