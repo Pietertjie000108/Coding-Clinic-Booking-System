@@ -6,9 +6,7 @@ login)
 register)
     python3 $PWD/authenticator/new_user.py
     ;;
-*)
-    cat $PWD/src/help.txt
-    ;;
+
 
 
 patient)
@@ -63,14 +61,7 @@ clinician)
     ;;
 
 *)
-    echo "'wtc-clinic register'             For first time users 
-'wtc-clinic login'                Login before each use. 
-
-Clinician functionality:
-        type: 'wtc-clinic clinician' into terminal
-        
-Patient functionality:
-        type: 'wtc-clinic patient' into terminal "
-;;
+    cat $PWD/src/help.txt
+    ;;
 esac
     
