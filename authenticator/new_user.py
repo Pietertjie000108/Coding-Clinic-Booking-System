@@ -4,7 +4,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
-import encrypter
+import authenticator.encrypter as encrypter
 import re
 # import replacer
 import stdiomask
@@ -39,7 +39,7 @@ def new_username():
         if username in usernames.read():
             usernames.close()
             print("That user already exists.")
-            return new_username()
+            sys.exit()
         else:
             usernames.close()
             return username
