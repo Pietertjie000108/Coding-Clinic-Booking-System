@@ -1,4 +1,7 @@
 case "$1" in
+*)
+    cat $PWD/src/help.txt
+    ;;
 login)
     python3 $PWD/authenticator/pass_auth.py
     ;;
