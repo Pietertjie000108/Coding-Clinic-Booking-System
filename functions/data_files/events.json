@@ -1,11 +1,101 @@
 {
     "events": [
         {
-            "7e0sshv9m0gq4hr2jfap0mq2pc": {
+            "rms9n6b2hj75l0ve636phk6roc": {
                 "attendees": [
                     {
-                        "displayName": "jkokot",
-                        "email": "jkokot@student.wethinkcode.co.za",
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
+                    }
+                ],
+                "created": "2020-12-08T11:54:51.000Z",
+                "creator": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "description": "empty",
+                "end": {
+                    "dateTime": "2020-12-09T15:30:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "etag": "\"3214856983134000\"",
+                "guestsCanModify": true,
+                "htmlLink": "https://www.google.com/calendar/event?eid=cm1zOW42YjJoajc1bDB2ZTYzNnBoazZyb2Mgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "rms9n6b2hj75l0ve636phk6roc@google.com",
+                "id": "rms9n6b2hj75l0ve636phk6roc",
+                "kind": "calendar#event",
+                "location": "WTC",
+                "organizer": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "reminders": {
+                    "useDefault": true
+                },
+                "sequence": 0,
+                "start": {
+                    "dateTime": "2020-12-09T15:00:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "status": "confirmed",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-08T11:54:51.567Z",
+                "visibility": "public"
+            }
+        },
+        {
+            "dg7rbs8sndh4jvmhftapbuk77c": {
+                "attendees": [
+                    {
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
+                    }
+                ],
+                "created": "2020-12-08T11:55:00.000Z",
+                "creator": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "description": "empty",
+                "end": {
+                    "dateTime": "2020-12-09T17:30:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "etag": "\"3214857001422000\"",
+                "guestsCanModify": true,
+                "htmlLink": "https://www.google.com/calendar/event?eid=ZGc3cmJzOHNuZGg0anZtaGZ0YXBidWs3N2Mgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "dg7rbs8sndh4jvmhftapbuk77c@google.com",
+                "id": "dg7rbs8sndh4jvmhftapbuk77c",
+                "kind": "calendar#event",
+                "location": "WTC",
+                "organizer": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "reminders": {
+                    "useDefault": true
+                },
+                "sequence": 0,
+                "start": {
+                    "dateTime": "2020-12-09T17:00:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "status": "confirmed",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-08T11:55:00.711Z",
+                "visibility": "public"
+            }
+        },
+        {
+            "bct9oc0q53io82p48chb2ao54c": {
+                "attendees": [
+                    {
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
                         "optional": true,
                         "responseStatus": "accepted"
                     },
@@ -16,21 +106,21 @@
                         "responseStatus": "accepted"
                     }
                 ],
-                "created": "2020-12-04T08:51:20.000Z",
+                "created": "2020-12-08T11:55:22.000Z",
                 "creator": {
                     "email": "wethinkmock@gmail.com",
                     "self": true
                 },
                 "description": "recursion",
                 "end": {
-                    "dateTime": "2020-12-11T14:30:00+02:00",
+                    "dateTime": "2020-12-10T08:30:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
-                "etag": "\"3214828082776000\"",
+                "etag": "\"3215007921382000\"",
                 "guestsCanModify": true,
-                "htmlLink": "https://www.google.com/calendar/event?eid=N2Uwc3NodjltMGdxNGhyMmpmYXAwbXEycGMgd2V0aGlua21vY2tAbQ",
-                "iCalUID": "7e0sshv9m0gq4hr2jfap0mq2pc@google.com",
-                "id": "7e0sshv9m0gq4hr2jfap0mq2pc",
+                "htmlLink": "https://www.google.com/calendar/event?eid=YmN0OW9jMHE1M2lvODJwNDhjaGIyYW81NGMgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "bct9oc0q53io82p48chb2ao54c@google.com",
+                "id": "bct9oc0q53io82p48chb2ao54c",
                 "kind": "calendar#event",
                 "location": "WTC",
                 "organizer": {
@@ -42,39 +132,40 @@
                 },
                 "sequence": 0,
                 "start": {
-                    "dateTime": "2020-12-11T14:00:00+02:00",
+                    "dateTime": "2020-12-10T08:00:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
                 "status": "confirmed",
-                "summary": "jkokot - Code Clinic",
-                "updated": "2020-12-08T07:54:01.388Z",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-09T08:52:40.691Z",
                 "visibility": "public"
             }
         },
         {
-            "r9kvunok5or2sk1ujk5dm9j41k": {
+            "tpobqucmi4ah86g4i8u5o7brmo": {
                 "attendees": [
                     {
-                        "displayName": "jkokot",
-                        "email": "jkokot@student.wethinkcode.co.za",
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
                         "optional": true,
                         "responseStatus": "accepted"
                     }
                 ],
-                "created": "2020-12-08T09:14:19.000Z",
+                "created": "2020-12-08T11:55:13.000Z",
                 "creator": {
-                    "email": "jkokot@student.wethinkcode.co.za"
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
                 },
                 "description": "empty",
                 "end": {
-                    "dateTime": "2020-12-14T17:30:00+02:00",
+                    "dateTime": "2020-12-10T13:30:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
-                "etag": "\"3214837719004000\"",
+                "etag": "\"3214857027776000\"",
                 "guestsCanModify": true,
-                "htmlLink": "https://www.google.com/calendar/event?eid=cjlrdnVub2s1b3Iyc2sxdWprNWRtOWo0MWsgd2V0aGlua21vY2tAbQ",
-                "iCalUID": "r9kvunok5or2sk1ujk5dm9j41k@google.com",
-                "id": "r9kvunok5or2sk1ujk5dm9j41k",
+                "htmlLink": "https://www.google.com/calendar/event?eid=dHBvYnF1Y21pNGFoODZnNGk4dTVvN2JybW8gd2V0aGlua21vY2tAbQ",
+                "iCalUID": "tpobqucmi4ah86g4i8u5o7brmo@google.com",
+                "id": "tpobqucmi4ah86g4i8u5o7brmo",
                 "kind": "calendar#event",
                 "location": "WTC",
                 "organizer": {
@@ -86,12 +177,153 @@
                 },
                 "sequence": 0,
                 "start": {
-                    "dateTime": "2020-12-14T17:00:00+02:00",
+                    "dateTime": "2020-12-10T13:00:00+02:00",
                     "timeZone": "Africa/Johannesburg"
                 },
                 "status": "confirmed",
-                "summary": "jkokot - Code Clinic",
-                "updated": "2020-12-08T09:14:19.502Z",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-08T11:55:13.888Z",
+                "visibility": "public"
+            }
+        },
+        {
+            "sfftplj923t58s500oc52qkplg": {
+                "attendees": [
+                    {
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
+                    },
+                    {
+                        "displayName": "mnnyembe",
+                        "email": "mnnyembe@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
+                    }
+                ],
+                "created": "2020-12-08T11:55:39.000Z",
+                "creator": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "description": "lambda",
+                "end": {
+                    "dateTime": "2020-12-11T08:30:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "etag": "\"3215005977456000\"",
+                "guestsCanModify": true,
+                "htmlLink": "https://www.google.com/calendar/event?eid=c2ZmdHBsajkyM3Q1OHM1MDBvYzUycWtwbGcgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "sfftplj923t58s500oc52qkplg@google.com",
+                "id": "sfftplj923t58s500oc52qkplg",
+                "kind": "calendar#event",
+                "location": "WTC",
+                "organizer": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "reminders": {
+                    "useDefault": true
+                },
+                "sequence": 0,
+                "start": {
+                    "dateTime": "2020-12-11T08:00:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "status": "confirmed",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-09T08:36:28.728Z",
+                "visibility": "public"
+            }
+        },
+        {
+            "v4m25cqa6ss98j7gcfcr4f224g": {
+                "attendees": [
+                    {
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
+                    }
+                ],
+                "created": "2020-12-08T11:55:48.000Z",
+                "creator": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "description": "empty",
+                "end": {
+                    "dateTime": "2020-12-11T10:30:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "etag": "\"3214857097078000\"",
+                "guestsCanModify": true,
+                "htmlLink": "https://www.google.com/calendar/event?eid=djRtMjVjcWE2c3M5OGo3Z2NmY3I0ZjIyNGcgd2V0aGlua21vY2tAbQ",
+                "iCalUID": "v4m25cqa6ss98j7gcfcr4f224g@google.com",
+                "id": "v4m25cqa6ss98j7gcfcr4f224g",
+                "kind": "calendar#event",
+                "location": "WTC",
+                "organizer": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "reminders": {
+                    "useDefault": true
+                },
+                "sequence": 0,
+                "start": {
+                    "dateTime": "2020-12-11T10:00:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "status": "confirmed",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-08T11:55:48.539Z",
+                "visibility": "public"
+            }
+        },
+        {
+            "o63avcnoorj5dmfegqidu8gek8": {
+                "attendees": [
+                    {
+                        "displayName": "ipretori",
+                        "email": "ipretori@student.wethinkcode.co.za",
+                        "optional": true,
+                        "responseStatus": "accepted"
+                    }
+                ],
+                "created": "2020-12-08T11:55:56.000Z",
+                "creator": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "description": "empty",
+                "end": {
+                    "dateTime": "2020-12-11T15:30:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "etag": "\"3215004326194000\"",
+                "guestsCanModify": true,
+                "htmlLink": "https://www.google.com/calendar/event?eid=bzYzYXZjbm9vcmo1ZG1mZWdxaWR1OGdlazggd2V0aGlua21vY2tAbQ",
+                "iCalUID": "o63avcnoorj5dmfegqidu8gek8@google.com",
+                "id": "o63avcnoorj5dmfegqidu8gek8",
+                "kind": "calendar#event",
+                "location": "WTC",
+                "organizer": {
+                    "email": "wethinkmock@gmail.com",
+                    "self": true
+                },
+                "reminders": {
+                    "useDefault": true
+                },
+                "sequence": 0,
+                "start": {
+                    "dateTime": "2020-12-11T15:00:00+02:00",
+                    "timeZone": "Africa/Johannesburg"
+                },
+                "status": "confirmed",
+                "summary": "ipretori - Code Clinic",
+                "updated": "2020-12-09T08:22:43.097Z",
                 "visibility": "public"
             }
         }
