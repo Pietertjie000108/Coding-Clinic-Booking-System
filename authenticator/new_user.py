@@ -6,7 +6,6 @@ sys.path.insert(0, parentdir)
 
 import authenticator.encrypter as encrypter
 import re
-# import replacer
 import stdiomask
 
 
@@ -46,6 +45,7 @@ def new_username():
             if username.isalpha():
                 return username
             else :
+                print("\nPlease enter the correct username.\n")
                 sys.exit()
 
 
