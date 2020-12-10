@@ -4,6 +4,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
+import connection_test as ct
 import calender_api
 import get_events
 import date_format as df
@@ -44,6 +45,9 @@ def delete_patient_slot(service, username):
 
 
 def main_function():
+    if ct.connection_test() == False:
+        print("\nPlease check your internet connection.\n")
+        return
     if len(argv) != 2:
         print("\nPlease enter valid input. e.g: wtc-clinic patient delete <ID>\n")
         return
