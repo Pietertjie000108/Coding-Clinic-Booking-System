@@ -21,7 +21,7 @@ def main():
         if user_find(file_reader) == True:
             file.close()
         else :
-            print("Please make sure you are registered.")
+            print("\nPlease make sure you are registered.\n")
 
 def user_find(file):
     """
@@ -33,7 +33,7 @@ def user_find(file):
     username = username1.lower()
     for row in file:
         if row[0] == username:
-            print("username found", username)
+            print("\n username found " + username +"\n")
             user_found = [row[0],row[1]]
             pass_check(user_found)
             gen.create_username_file(username)
@@ -52,8 +52,8 @@ def pass_check(user_found):
         password = stdiomask.getpass(prompt="Please enter your password: ", mask='*')
         pass1 = encrypter.encrypt_password(password)
         if user_found[1] == pass1:
-            return "password match"
+            return "\nPassword match\n"
         else:
-            print("password not match")
+            print("\nPassword do not match\n")
 
 main()
