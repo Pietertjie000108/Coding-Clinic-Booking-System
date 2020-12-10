@@ -43,7 +43,10 @@ def new_username():
             sys.exit()
         else:
             usernames.close()
-            return username
+            if username.isalpha():
+                return username
+            else :
+                sys.exit()
 
 
 def password():
