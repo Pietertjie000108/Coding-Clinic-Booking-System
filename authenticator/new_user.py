@@ -24,10 +24,11 @@ def main():
             username,password = user_and_pass()
             user = username
             pswd = encrypter.encrypt_password(password)
-            if robot_test() == False:
-                return file_ob.write("\n"+user + "," + pswd + "")
-            else: 
-                return("It's a trap!!!")
+            # if robot_test() == False:
+            #     return file_ob.write("\n"+user + "," + pswd + "")
+            # else: 
+            #     return("It's a trap!!!")
+            return file_ob.write("\n"+user + "," + pswd + "")
                 
 
 def new_username():
@@ -38,7 +39,7 @@ def new_username():
     with open("authenticator/users.txt", 'r') as usernames:
         if username in usernames.read():
             usernames.close()
-            print("That user already exists.")
+            print("\nThat user already exists.\n")
             sys.exit()
         else:
             usernames.close()
@@ -73,19 +74,19 @@ def validate():
             return password
 
 
-def robot_test():
-    """
-    just a fun little test
-    """
-    valid_answers = ['1', '2']
-    answer = input("Are you a robot? \n 1) No. \n 2) Yes. \n")
-    while answer in valid_answers:
-        if answer == '1':
-            return False
-        else :
-            return True
-    else :
-        return True
+# def robot_test():
+#     """
+#     just a fun little test
+#     """
+#     valid_answers = ['1', '2']
+#     answer = input("Are you a robot? \n 1) No. \n 2) Yes. \n")
+#     while answer in valid_answers:
+#         if answer == '1':
+#             return False
+#         else :
+#             return True
+#     else :
+#         return True
 
 
 def user_and_pass():

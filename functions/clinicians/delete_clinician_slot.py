@@ -4,6 +4,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
+import connection_test as ct
 import calender_api
 import get_events
 import date_format as df
@@ -42,11 +43,15 @@ def actual_delete_events(user_input, username, service):
 
 
 def main_function():
-    service = calender_api.create_auth_service()
-    if auth_interface.check_if_credentials_have_expired():
+    if ct.connection_test() == True:
+        service = calender_api.create_auth_service()
+        if auth_interface.check_if_credentials_have_expired():
+            return
+        username = get_events.get_username()
+        delete_clinician_slot(service, username)
+    else :
+        print("\nPlease check your internet connection. \n")
         return
-    username = get_events.get_username()
-    delete_clinician_slot(service, username)
 
 
 if __name__ == '__main__':
