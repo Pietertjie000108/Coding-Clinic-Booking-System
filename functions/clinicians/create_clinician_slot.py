@@ -17,21 +17,45 @@ import os
 from sys import argv
 
 
+def check_if_slots_overlap_on_personal_calender(start2, end, service, username):
+    events_result = service.events().list(calendarId='primary',
+                                        singleEvents=True,
+                                        orderBy='startTime').execute()
+    events = events_result.get('items', [])
+
+    for event in events:
+        st = re.split("[-T:+]",start2)
+        start1 = event['start'].get('dateTime', event['start'].get('date'))
+        end1 = event['end'].get('dateTime', event['end'].get('date'))
+        start = df.convert_to_RFC_datetime(int(st[0]), int(st[1]), int(st[2]), int(st[3])+2, int(st[4]))
+    
+        if df.check_if_events_are_in_same_day(start, start1):
+            if df.calculate_time_difference_personal_calendar(start, start1, end1) == True:
+                return True
+    return False
+
+
+
 def check_if_slots_overlap(start2, end, service, username):
     events_result = service.events().list(calendarId=get_events.calendar_id,
                                         singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
     
+    my_bool = check_if_slots_overlap_on_personal_calender(start2, end, service, username)
+    if my_bool == True:
+        return True
+
     for event in events:
         start1 = event['start'].get('dateTime', event['start'].get('date'))
         st = re.split("[-T:+]",start2)
         start = df.convert_to_RFC_datetime(int(st[0]), int(st[1]), int(st[2]), int(st[3])+2, int(st[4]))
         if df.check_if_events_are_in_same_day(start, start1):
-            time_diff = df.calculate_time_difference(start, start1)
+            time_diff = df.calculate_time_difference_code_clinics_calender(start, start1)
             if time_diff > -1800.0 and time_diff < 1800.0 and username in event['summary']:
                 return True
     return False
+
 
 
 def add_to_calender(service, username):
@@ -74,15 +98,16 @@ def add_to_calender(service, username):
     }
     start = event_request_body['start']['dateTime']
     end = event_request_body['end']['dateTime']
+
     overlaps = check_if_slots_overlap(start, end, service, username)
     if overlaps == False:
         response = service.events().insert(calendarId=get_events.calendar_id, sendUpdates='all', body=event_request_body).execute()
-        print("\nYour slot has been created...\n")
+        print("\nYour slot has been created...")
     else:
-        print("You've already created a slot for this time. Please choose another time...")
+        print("\nYou already have an event scheduled for this time. Please choose another time...")
     events, count = get_events.get_events_for_next_7_days_to_delete(username, service)
     if count == 0:
-        print("There are currently no available slots for Code Clinics. Check again later.")
+        print("\nYou currently don't have any slots created.")
         return
 
 
@@ -96,6 +121,7 @@ def main_function():
     else :
         print("\nPlease check your internet connection. \n")
         return
+      
 
 if __name__ == '__main__':
     main_function()

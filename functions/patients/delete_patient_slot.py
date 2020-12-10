@@ -17,14 +17,15 @@ def update_slot_with_deleted_patient(uid, username, event, service):
     for student in event['attendees']:
         if student['displayName'] == username:
             event['attendees'].remove(student)
+            event['description'] = 'empty'
     service.events().update(calendarId=get_events.calendar_id, eventId=uid, body=event, sendUpdates='all').execute()
-    print(f"You have successfully deleted slot {uid}...\n")
+    print(f"\nYou have successfully deleted slot {uid}...")
 
 
 def delete_patient_slot(service, username):
     events, count = get_events.get_all_code_clinic_slots_to_delete_without_printing(service, username)
     if count == 0:
-        print("There are currently no available slots to delete.")
+        print("\nYou currently have no available slots to delete.\n")
         return
     while True:
         uid = argv[1]
@@ -35,14 +36,14 @@ def delete_patient_slot(service, username):
                 update_slot_with_deleted_patient(uid, username, event2, service)
                 events, count = get_events.get_all_code_clinic_slots_to_delete(service, username)
                 if count == 0:
-                    print("You don't have anymore slots.")
+                    print("You don't have anymore slots.\n")
                     return
                 return
             if events[-1] == event:
-                print("Please enter a valid ID.")
+                print("\nPlease enter a valid ID.\n")
                 return
 
-
+              
 def main_function():
     if ct.connection_test() == True:
         service = calender_api.create_auth_service()
@@ -53,6 +54,7 @@ def main_function():
     else :
         print("\nPlease check your internet connection. \n")
         return
+      
 
 if __name__ == '__main__':
     main_function()

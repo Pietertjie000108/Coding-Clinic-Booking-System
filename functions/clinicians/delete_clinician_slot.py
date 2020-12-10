@@ -22,10 +22,10 @@ def delete_clinician_slot(service, username):
             if event_id == user_input:
                 events1, count1 = actual_delete_events(user_input, username, service)
                 if count1 == 0:
-                    print("You currently don't have any slots created.")
+                    print("\nYou currently don't have any slots created.\n")
                 return
             if events[-1] == event:
-                print("Please enter a valid ID.")
+                print("\nPlease enter a valid ID.\n")
                 return
 
 

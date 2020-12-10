@@ -9,8 +9,31 @@ import calender_api
 import get_events
 import date_format as df
 import auth_interface
+from pprint import pprint
 import json
+import re
 from sys import argv
+
+def check_if_slots_overlap_on_personal_calender(start2, end, service, username):
+    events_result = service.events().list(calendarId='primary',
+                                        singleEvents=True,
+                                        orderBy='startTime').execute()
+    events = events_result.get('items', [])
+
+    for event in events:
+        st = re.split("[-T:+]",start2)
+        start1 = event['start'].get('dateTime', event['start'].get('date'))
+        end1 = event['end'].get('dateTime', event['end'].get('date'))
+        start = df.convert_to_RFC_datetime(int(st[0]), int(st[1]), int(st[2]), int(st[3])+2, int(st[4]))
+    
+        if df.check_if_events_are_in_same_day(start, start1):
+            # pprint(event)
+            # print(start1)
+            if df.calculate_time_difference_personal_calendar(start, start1, end1, 'patient') == True:
+                # pprint(event)
+                return True
+    return False
+
 
 def update_slot_with_patient(uid, username, event, service):
     descr = argv[1]
@@ -35,12 +58,21 @@ def add_patient_slot_to_calender(service, username):
         for event in events:
             event_id = event['id']
             if event_id == uid:
+                start = event['start'].get('dateTime', event['start'].get('date'))
+                end = event['end'].get('dateTime', event['end'].get('date'))
+                overlaps = check_if_slots_overlap_on_personal_calender(start, end, service, username)
+                # print(overlaps)
+                # return
+                if overlaps:
+                    print("\nYou already have an event scheduled for this time. Please choose another slot...\n")
+                    return
+                
                 event2 = service.events().get(calendarId=get_events.calendar_id, eventId=uid).execute()
                 update_slot_with_patient(uid, username, event2, service)
                 get_events.get_all_code_clinic_slots_to_delete(service, username)
                 return
             if events[-1] == event:
-                print("Please enter a valid ID.")
+                print("\nPlease enter a valid ID.\n")
                 return
 
 
@@ -54,6 +86,7 @@ def main_function():
     else :
         print("\nPlease check your internet connection. \n")
         return
+
 
 
 if __name__ == '__main__':
