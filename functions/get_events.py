@@ -60,7 +60,7 @@ def get_events_for_next_7_days_to_delete(username, service):
         count ([int]): either 1 or 0, returns 1 if there where events returned and 0 if there arent any events.
     """    
     event_list = {"events" : []}
-    print("\nThese are your current slots: \n")
+    print("\nThese are your upcoming slots for the next 7 days: \n")
     time = df.get_current_and_7_days_date_and_time_in_RFC3339()
     events_result = service.events().list(calendarId=calendar_id, timeMin=time[0],
                                         singleEvents=True, timeMax=time[1],
