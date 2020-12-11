@@ -1,10 +1,8 @@
 case "$1" in
 
-
 help)
     cat ~/Coding-Clinic-Booking-System/src/help.txt
     ;;
-
 login)
     python3 ~/Coding-Clinic-Booking-System/authenticator/pass_auth.py
     ;;
@@ -50,7 +48,7 @@ clinician)
         ;;
 
     create)
-        python3 ~/Coding-Clinic-Booking-System/functions/clinicians/create_clinician_slot.py $3 $4
+        python3 ~/Coding-Clinic-Booking-System/unctions/clinicians/create_clinician_slot.py $3 $4
         ;;
 
     delete)
@@ -66,5 +64,15 @@ clinician)
     ;;
 
 *)
+    echo "'wtc-clinic help'       For the README.
+'wtc-clinic register'             For first time users 
+'wtc-clinic login'                Login before each use. 
+
+Clinician functionality:
+        type: 'wtc-clinic clinician' into terminal
+        
+Patient functionality:
+        type: 'wtc-clinic patient' into terminal "
+;;
 esac
     
