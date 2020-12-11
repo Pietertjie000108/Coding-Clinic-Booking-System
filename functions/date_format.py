@@ -8,9 +8,15 @@ import re
 Data formats
 """
 def format_time_to_make_readable(event):
-    """
-    displaying the time in a readable format
-    """
+    """[Converts time from RFC3339 to a more readable format]
+
+    Args:
+        event ([object]): [an event object]
+
+    Returns:
+        [string]: [Time in a more readable format]
+    """    
+
     start1 = event['start'].get('dateTime', event['start'].get('date'))
     start = re.split("[-T:+]",start1)
     return f'{start[0]}-{start[1]}-{start[2]} @ {start[3]}:{start[4]}'
@@ -25,9 +31,11 @@ def convert_to_RFC_datetime(year=1900, month=1, day=1, hour=0, minute=0):
 
 
 def get_current_and_7_days_date_and_time_in_RFC3339():
-    """
-    *insert docstring here*
-    """
+    """[Gets current time and return it in RFC3339 time for Google calendar to understand]
+
+    Returns:
+        [tuple]: [tuple of strings with the first being the current date and the second element being the the date in 7 days]
+    """    
     date = datetime.datetime.utcnow()
     date_in_7_days = date + timedelta(7)
     date_with_timezone = date.isoformat("T") + "Z"
@@ -37,12 +45,16 @@ def get_current_and_7_days_date_and_time_in_RFC3339():
 
 
 def get_add_to_calender_input(dateP, timeP):
-    """
-    getting data data from user inputs
-    validating the month the user inputs
-    validating the day the user inputs
-    as well as the time
-    """
+    """[Checks whether the date and time the user inputs is valid and displays appropriate responses if it isnt]
+
+    Args:
+        dateP ([string]): [date in this format - 2020/12/08]
+        timeP ([string]): [time in this format 14:20]
+
+    Returns:
+        [tuple]: [tuple with the year, day, start time, end time]
+    """ 
+
     valid_months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
 
     now = datetime.datetime.now()
@@ -64,9 +76,9 @@ def get_add_to_calender_input(dateP, timeP):
             print('\nPlease enter a valid date.\n')
             return
         month = valid_months[int(date[1])-1]
-        if month in valid_months and valid_months.index(month)+1 >= now.month:
+        if month in valid_months and (valid_months.index(month)+1 >= now.month or now.year < year):
             break
-        elif valid_months.index(month)+1 < now.month:
+        elif valid_months.index(month)+1 < now.month and now.year <= year:
             print('\nThe date you chose has already passed. Please enter another date.\n')
             return
         else:
@@ -98,12 +110,31 @@ def get_add_to_calender_input(dateP, timeP):
 
 
 def calculate_seconds(time1, time2):
+    """[Takes 2 time intervals and calculate the time difference between the 2 in seconds]
+
+    Args:
+        time1 ([string]): [time in the following format HH:MM:SS]
+        time2 ([string]): [time in the following format HH:MM:SS]
+
+    Returns:
+        [int}: [return the difference between the 2 times in seconds]
+    """    
     FMT = '%H:%M:%S'
     tdelta = dT.strptime(time1, FMT) - dT.strptime(time2, FMT)
     return tdelta.total_seconds()
 
 
 def calculate_time_difference_code_clinics_calender(start, start1, user='clinician'):
+    """[takes date and time in RFC3339 format and calculate the time difference between the 2 in seconds]
+
+    Args:
+        start ([string]): [date and time in RFC3339 format]
+        start1 ([string]): [date and time in RFC3339 format]
+        user (str, optional): [specifies if we want to calculate the time difference for a clinician of a patient]. Defaults to 'clinician'.
+
+    Returns:
+        [int]: [return the difference between the 2 times in seconds]
+    """    
     FMT = '%H:%M:%S'
     start_time = re.split("[-T:+]",start)
     start = re.split("[-T:+]",start1)
@@ -119,6 +150,18 @@ def calculate_time_difference_code_clinics_calender(start, start1, user='clinici
 
 
 def calculate_time_difference_personal_calendar(start, start1, end1, user='clinician'):
+    """[Checks whether a slot that a patient is trying to create overlaps with any events hes/shes involved in whehter its code clinics related
+    of on their personal calender.]
+
+    Args:
+        start ([string]): [start of the event that the student is to create (if clinician) or signup to (if patient)]
+        start1 ([string]): [start of the event that is on the students calendar]
+        end1 ([type]): [end time of the event that is on the students calendar]
+        user (str, optional): [specifies if we want to calculate the time difference for a clinician of a patient]. Defaults to 'clinician'.
+
+    Returns:
+        [bool]: [Returns True or False. True if event being created or being signed up to overlaps, false if it doesnt]
+    """    
     start_of_new = re.split("[-T:+]",start)
     start_of_old = re.split("[-T:+]",start1)
     end_of_old = re.split("[-T:+]",end1) 
@@ -146,6 +189,15 @@ def calculate_time_difference_personal_calendar(start, start1, end1, user='clini
 
 
 def check_if_events_are_in_same_day(start, start1):
+    """[Takes 2 dates in RFC3339 time and checks whether they are in the same day. returns either True or False]
+
+    Args:
+        start ([string]): [Date in RFC3339]
+        start1 ([string]): [Date in RFC3339]
+
+    Returns:
+        [bool]: [True if dates are in the same day. False if they arent]
+    """    
     start_t = re.split("[-T:+]",start)
     start = re.split("[-T:+]",start1)
     return start[0] == start_t[0] and start[1] == start_t[1] and start[2] == start_t[2]

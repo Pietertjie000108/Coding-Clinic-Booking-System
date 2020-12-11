@@ -12,28 +12,21 @@ Login
 
     register                -   Prompts registration details: username, password then confirm password
 
-
     login                   -   Prompts user for login details that will be used to book or host a clinic
                 
-
 Clinician
 
     create [date] [time]    -   Hosts clinic at specified date and time.
                             
-
     view                    -   Views all created slots by user.
                                 
-
     delete [uid]            -   Cancels clinic if it hasn't been booked yet.
-
 
 Patient
 
     slots                   -   Views all slots available to book.
 
-
     view                    -   Views all slots that has been booked by user.
-
 
     signup [topic] [uid]    -   Signs user up for selected slot with specified topic.
 

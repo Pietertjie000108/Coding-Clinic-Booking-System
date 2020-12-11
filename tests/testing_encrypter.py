@@ -1,5 +1,11 @@
+import sys, os, inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir)
+
 import unittest
-import encrypter
+import authenticator.encrypter as encrypter
 
 class Test_encrypt_and_decrypt(unittest.TestCase):
 
