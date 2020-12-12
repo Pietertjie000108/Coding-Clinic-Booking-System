@@ -12,7 +12,7 @@ from unittest.mock import patch
 import calender_api
 import date_format as df
 import datetime
-import delete_clinician_slot
+import functions.clinicians.delete_clinician_slot
 #import auth_interface
 
 service = calender_api.create_auth_service()

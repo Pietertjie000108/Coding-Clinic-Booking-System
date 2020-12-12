@@ -11,10 +11,10 @@ import unittest
 import test_base
 from unittest.mock import patch
 import argparse
-import calender_api
-import date_format as df
+import functions.calender_api as calender_api
+import functions.date_format as df
 import datetime
-import create_clinician_slot
+import functions.clinicians.create_clinician_slot as create_clinician_slot
 #import auth_interface
 
 service = calender_api.create_auth_service()

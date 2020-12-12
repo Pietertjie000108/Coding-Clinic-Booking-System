@@ -48,7 +48,7 @@ clinician)
         ;;
 
     create)
-        python3 ~/Coding-Clinic-Booking-System/unctions/clinicians/create_clinician_slot.py $3 $4
+        python3 ~/Coding-Clinic-Booking-System/functions/clinicians/create_clinician_slot.py $3 $4
         ;;
 
     delete)
